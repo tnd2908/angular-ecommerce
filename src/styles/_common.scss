@@ -1,0 +1,17 @@
+.main-grid {
+    width: 100%;
+    max-width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.bg {
+    &-5 {
+        background-color: #631118;
+    }
+    &-6 {
+        background-color: #8a1e24;
+    }
+    &-7 {
+        background-color: #af3033;
+    }
+}
