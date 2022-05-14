@@ -21,6 +21,11 @@ input {
     outline: none;
     border-style: solid;
     padding-left: 15px;
+    width: 100%;
+    border-color: #eee;
+    border-radius: 4px;
+    height: 45px;
+    outline: none;
     &::placeholder {
         color: silver;
     }

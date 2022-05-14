@@ -1,0 +1,55 @@
+.btn-login {
+    background-color: #AF3033;
+    width: 100%;
+    margin: 0 atuo;
+    border-radius: 4px;
+    border: 0;
+    color: white;
+    height: 45px;
+}
+.form {
+    &__sub-title {
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+    }
+    &__reset-pw {
+        color: silver;
+        &:hover {
+            color: silver;
+        }
+    }
+}
+.register-link {
+    color: #AF3033;
+    margin-bottom: 0;
+    margin-left: 12px;
+        &:hover {
+        color: #AF3033;
+    }
+}
+input {
+    background-color: #eee;
+    border: 0;
+}
+.icon {
+    color: white;
+    margin: 0 10px;
+    i {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        background-color: #eee;
+        border-radius: 50%;
+    }
+    .fa-facebook-f {
+        background-color: #3b5998;
+    }
+    .fa-twitter {
+        background-color: #1da1f2;
+    }
+    .fa-google {
+        background-color: #ea4335;
+    }
+}

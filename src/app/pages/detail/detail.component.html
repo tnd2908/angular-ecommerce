@@ -1,1 +1,185 @@
-<p> {{product.name}} </p>
+<div class="container-fluid bg-light">
+    <div class="container product-detail">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="product-detail--left">
+                    <img class="product-detail__thumb" src={{product.imagePath}} alt="">
+                    <div class="product-detail__sub-image">
+                        <div class="row mt-4">
+                            <div class="col-3 bg-light">
+                                <img src="https://image.cellphones.com.vn/358x/media/catalog/product/i/p/iphone-12_3__1.jpg"
+                                    alt="" class="product-detail__sub-image active">
+                            </div>
+                            <div class="col-3 bg-light">
+                                <img src="https://image.cellphones.com.vn/358x/media/catalog/product/i/p/iphone-12_4__1.jpg"
+                                    alt="" class="product-detail__sub-image">
+                            </div>
+                            <div class="col-3 bg-light">
+                                <img src="https://image.cellphones.com.vn/358x/media/catalog/product/i/p/iphone-12_2__1.jpg"
+                                    alt="" class="product-detail__sub-image">
+                            </div>
+                            <div class="col-3 bg-light">
+                                <img src="https://image.cellphones.com.vn/358x/media/catalog/product/i/p/iphone-12_2__1.jpg"
+                                    alt="" class="product-detail__sub-image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 bg-white">
+                <div class="product-detail--right">
+                    <h2> {{product.name}} </h2>
+                    <div class="d-flex mt-2">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star in-active"></i>
+                    </div>
+                    <div class="product-detail__ram d-flex flex-column">
+                        <h5>Bộ nhớ trong: </h5>
+                        <div class="d-flex align-items-center mt-3">
+                            <input type="radio" class="btn-check" name="options-outlined" id="1" autocomplete="off"
+                                checked>
+                            <label class="btn btn-outline-danger" for="1">64GB</label>
+                            <input type="radio" class="btn-check" name="options-outlined" id="2" autocomplete="off">
+                            <label class="btn btn-outline-danger" for="2">128GB</label>
+                            <input type="radio" class="btn-check" name="options-outlined" id="3" autocomplete="off">
+                            <label class="btn btn-outline-danger" for="3">256GB</label>
+                        </div>
+                    </div>
+                    <p class="product-detail__price">Giá: 36.900.000đ</p>
+                    <div class="card rounded">
+                        <div class="card-header">
+                            <h6><i class="fal fa-gift me-2"></i>Khuyến mãi</h6>
+                        </div>
+                        <div class="card-body">
+                            <p>Giảm thêm tới 1% cho thành viên của DK Store (áp dụng tùy sản phẩm)</p>
+                            <p>Thu cũ đổi mới: Giá thu cao - Thủ tục nhanh chóng - Trợ giá tốt nhất</p>
+                            <p>Hư gì đổi nấy trong 15 ngày nếu lỗi do nhà sản xuất (trừ các nhóm: Đồng hồ, phụ kiện có
+                                điện, Phụ kiện xe đạp, Phụ kiện không điện, xe đạp, xe đạp điện)</p>
+                        </div>
+                    </div>
+                    <div class="product-detail__action d-flex">
+                        <button class="btn-buy">Mua ngay</button>
+                        <button class="btn-add-to-cart">Thêm vào giỏ hàng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row bg-white mt-3 pt-3">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-info-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
+                        type="button" role="tab" aria-controls="nav-home" aria-selected="true">Thông tin sản
+                        phẩm</button>
+                    <button class="nav-link" id="nav-vote-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+                        type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Đánh giá</button>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active pb-3" id="nav-home" role="tabpanel"
+                    aria-labelledby="nav-info-tab">
+                    <p class="mt-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint ea perspiciatis
+                        error, molestias exercitationem, distinctio sequi non omnis in fugiat, quia aut nihil velit
+                        pariatur explicabo voluptatibus itaque sit. Iste.
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus cum animi rem, nam
+                        possimus error delectus? Omnis, maxime sint ad odit, amet adipisci laudantium officia nam,
+                        accusantium porro architecto rem.
+                    </p>
+                    <h3>Thông số sản phẩm</h3>
+                    <div class="row app-table">
+                        <div class="col-4">Kích thuớc màn hình</div>
+                        <div class="col-8">6.1 inches</div>
+                        <div class="col-4">Camera sau</div>
+                        <div class="col-8">12 MP</div>
+                        <div class="col-4">Camera trước</div>
+                        <div class="col-8">12 MP</div>
+                        <div class="col-4">Dung lượng RAM</div>
+                        <div class="col-8">4 GB</div>
+                        <div class="col-4">Bộ nhớ trong</div>
+                        <div class="col-8">64 GB</div>
+                    </div>
+                    <h3 class="mt-3">Sản phẩm tương tự</h3>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-6"
+                            *ngFor="let relatedProduct of relatedProductList; let i = index">
+                            <div class="product-item" [routerLink]="'/product/'+relatedProduct.id.toString()">
+                                <img src={{relatedProduct.imagePath}} alt="">
+                                <div class="product-item__body">
+                                    <p class="product-item__title"> {{relatedProduct.name}} </p>
+                                    <p class="product-item__price"> {{relatedProduct.price}}đ </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-vote-tab">
+                    <div class="comment-form">
+                        <h3>Đánh giá của bạn</h3>
+                        <textarea rows="5" placeholder="Viết đánh giá của bạn"></textarea>
+                        <button>Gửi</button>
+                    </div>
+                    <div class="comment">
+                        <div class="d-flex">
+                            <img class="avatar" src="https://joeschmoe.io/api/v1/random" alt="">
+                            <div class="comment__detail">
+                                <h5>Nguyễn Gì Đó</h5>
+                                <p style="color: silver;">Ngày: 29/08/2000 - 19:00</p>
+                                <div class="d-flex mt-2 mb-2">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star in-active"></i>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos porro obcaecati
+                                    excepturi, dolores ab veniam quae dolore quasi itaque necessitatibus, eos cum non
+                                    labore deleniti corrupti praesentium illo debitis vel!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment">
+                        <div class="d-flex">
+                            <img class="avatar" src="https://joeschmoe.io/api/v1/random" alt="">
+                            <div class="comment__detail">
+                                <h5>Nguyễn Gì Đó</h5>
+                                <p style="color: silver;">Ngày: 29/08/2000 - 19:00</p>
+                                <div class="d-flex mt-2 mb-2">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star in-active"></i>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos porro obcaecati
+                                    excepturi, dolores ab veniam quae dolore quasi itaque necessitatibus, eos cum non
+                                    labore deleniti corrupti praesentium illo debitis vel!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment">
+                        <div class="d-flex">
+                            <img class="avatar" src="https://joeschmoe.io/api/v1/random" alt="">
+                            <div class="comment__detail">
+                                <h5>Nguyễn Gì Đó</h5>
+                                <p style="color: silver;">Ngày: 29/08/2000 - 19:00</p>
+                                <div class="d-flex mt-2 mb-2">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star in-active"></i>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos porro obcaecati
+                                    excepturi, dolores ab veniam quae dolore quasi itaque necessitatibus, eos cum non
+                                    labore deleniti corrupti praesentium illo debitis vel!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

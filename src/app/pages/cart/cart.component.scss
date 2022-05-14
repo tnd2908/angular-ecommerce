@@ -1,0 +1,92 @@
+.cart {
+    min-height: 80vh;
+    &-payment {
+        padding: 15px;
+        img {
+            width: 100%;
+        }
+        &__item {
+            h5 {
+                margin-bottom: 0;
+            }
+            &--top {
+                border-bottom: 1px solid #eee;
+                padding-bottom: 10px;
+            }
+            p {
+                margin-top: 10px;
+                margin-bottom: 0;
+                font-size: 17px;
+            }
+        }
+    }
+    .btn-apply {
+        background-color: red;
+        color: white;
+        border-radius: 4px;
+        height: 45px;
+        width: 100%;
+        border: 0;
+        margin-top: 10px;
+    }
+    .btn-payment {
+        background-color: #faad14;
+        color: white;
+        border-radius: 4px;
+        height: 45px;
+        width: 100%;
+        border: 0;
+        margin-top: 10px;
+    }
+    .btn-delete-item {
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        border: 0;
+        transform: translateX(100px);
+        transition: 0.5s;
+        background-color: red;
+        color: white;
+    }
+    &-item {
+        width: 100%;
+        background-color: #fff;
+        margin-bottom: 10px;
+        border-radius: 12px;
+        padding: 20px;
+        overflow: hidden;
+        &:hover {
+            .btn-delete-item {
+                transform: translateX(0);
+            }
+        }
+        img {
+            height: 120px;
+            width: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .product-image {
+            overflow: hidden;
+            width: 200px;
+        }
+        .product-info {
+            margin-left: 20px;
+            p {
+                font-size: 20px;
+            }
+            .action {
+                button {
+                    border: 0;
+                    width: 35px;
+                    height: 35px;
+                }
+                p {
+                    margin-bottom: 0;
+                    margin: 0 15px;
+                    font-size: 17px;
+                }
+            }
+        }
+    }
+}

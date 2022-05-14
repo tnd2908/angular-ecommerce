@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Params, Router } from '@angular/router';
 import { IProduct } from 'src/interface/product/product';
 import { ProductService } from 'src/service/product.service';
 
@@ -9,19 +9,17 @@ import { ProductService } from 'src/service/product.service';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
-  public id!: number
-  constructor(private service : ProductService, private route: ActivatedRoute, private router: Router) { }
+  id!: number
+  relatedProductList!: any[]
+  constructor(private service : ProductService, private route: ActivatedRoute) { }
   @Input() product! : IProduct;
 
   ngOnInit(): void {
-    console.log(this.route.snapshot.params);
-    
+    window.scrollTo(0, 0);
     this.route.params.subscribe((param : Params) => {
       this.id = +param['id'];
-      console.log(param);
-      
       this.product = this.service.getDetail(this.id)!;
-      console.log(this.product);
     })
+    this.relatedProductList = this.service.getProductList().slice(1,4);
   }
 }
