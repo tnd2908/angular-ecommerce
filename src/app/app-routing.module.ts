@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'admin', component: LayoutComponent, children: [
-    { path: '', component: ProductComponent },
+    { path: 'product', component: ProductComponent },
     { path: 'product/add', component: AddProductComponent },
   ]},
 ];

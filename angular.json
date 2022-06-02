@@ -32,8 +32,9 @@
             ],
             "styles": [
               "node_modules/primeicons/primeicons.css",
-              "node_modules/primeng/resources/themes/tailwind-light/theme.css",              
+              "node_modules/primeng/resources/themes/tailwind-light/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",              
               "src/styles.scss"
             ],
             "scripts": []
@@ -102,6 +103,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
