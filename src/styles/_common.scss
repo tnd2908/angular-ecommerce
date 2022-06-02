@@ -20,3 +20,21 @@
     justify-content: center;
     align-items: center;
 }
+
+button:focus,button:active:focus,button.active:focus,
+button.focus,button:active.focus,button.active.focus {
+    outline: none !important;
+}
+.btn:focus,.btn:active:focus,.btn.active:focus,
+.btn.focus,.btn:active.focus,.btn.active.focus {
+    outline: none !important;
+}
+.p-rating .p-rating-icon.pi-star-fill {
+    color: #fadb14
+}
+.p-rating .p-rating-icon {
+    color: silver;
+}
+.container-fluid {
+    overflow-x: hidden;
+}

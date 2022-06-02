@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  isAdminRoute: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
+    this.isAdminRoute = window.location.pathname.startsWith('/admin')
   }
 
 }
