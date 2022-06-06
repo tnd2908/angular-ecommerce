@@ -14,5 +14,27 @@
         background-color: #f6f6f6;
         border: 0;
         height: 20px;
+        &.input-file {
+            padding: 5px 10px;
+            height: auto;
+            display: none;
+        }
     }
+}
+.btn-upload {
+    padding: 10px 20px;
+    background-color: white;
+    border: 1px solid red;
+    color: red;
+    width: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btn-submit {
+    padding: 10px 20px;
+    background-color: red;
+    width: 100%;
+    border: 0;
+    color: white;
+    margin-top: 20px;
 }
