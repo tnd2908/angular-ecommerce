@@ -34,6 +34,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
+import { BrandComponent } from './pages/admin/brand/brand.component';
+import { AddBrandComponent } from './pages/admin/add-brand/add-brand.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +53,8 @@ import { AddCategoryComponent } from './pages/admin/add-category/add-category.co
     CategoryComponent,
     AddProductComponent,
     AddCategoryComponent,
+    BrandComponent,
+    AddBrandComponent,
   ],
   imports: [
     FormsModule,

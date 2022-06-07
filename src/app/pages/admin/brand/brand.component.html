@@ -1,0 +1,58 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <button
+        routerLink="/admin/brand/add"
+        pButton
+        pRipple
+        type="button"
+        label="Thêm thương hiệu"
+        class="p-button-raised p-button-danger mt-1"
+      ></button>
+    </div>
+    <div class="col-12 mt-3">
+      <p-table [value]="brands" responsiveLayout="scroll">
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="padding-right: 60px">#</th>
+            <th class="brand-title">Hình ảnh</th>
+            <th class="brand-title">Tên thương hiệu</th>
+            <th class="brand-title">Thao tác</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-brand>
+          <tr>
+            <td>{{ brand._id }}</td>
+            <td>
+              <img
+                [src]="brand.logo"
+                [alt]="brand.name"
+                width="100"
+                class="shadow-4 brand-image"
+              />
+            </td>
+            <td>{{ brand.name }}</td>
+            <td>
+              <div class="brand-action">
+                <button
+                  pButton
+                  pRipple
+                  type="button"
+                  icon="pi pi-pencil"
+                  class="p-button-sm p-button-success"
+                ></button>
+                <button
+                  pButton
+                  pRipple
+                  type="button"
+                  icon="pi pi-trash"
+                  class="p-button-sm p-button-danger"
+                ></button>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>

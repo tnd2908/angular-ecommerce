@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
-  selector: 'app-add-category',
-  templateUrl: './add-category.component.html',
-  styleUrls: ['./add-category.component.scss'],
+  selector: 'app-add-brand',
+  templateUrl: './add-brand.component.html',
+  styleUrls: ['./add-brand.component.scss'],
 })
-export class AddCategoryComponent implements OnInit {
+export class AddBrandComponent implements OnInit {
   form!: FormGroup;
   imageList: any[] = [];
   constructor() {}

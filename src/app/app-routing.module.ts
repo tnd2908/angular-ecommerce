@@ -10,6 +10,8 @@ import { RegisterComponent } from './pages/auth/register/register.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { DetailComponent } from './pages/detail/detail.component';
 import { HomeComponent } from './pages/home/home.component';
+import { BrandComponent } from './pages/admin/brand/brand.component';
+import { AddBrandComponent } from './pages/admin/add-brand/add-brand.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,6 +28,8 @@ const routes: Routes = [
       { path: 'product/add', component: AddProductComponent },
       { path: 'category', component: CategoryComponent },
       { path: 'category/add', component: AddCategoryComponent },
+      { path: 'brand', component: BrandComponent },
+      { path: 'brand/add', component: AddBrandComponent },
     ],
   },
 ];
