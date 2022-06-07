@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IBrand } from 'src/interface/brand/brand';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { API_URL } from 'src/app/utils/constant';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -21,7 +23,7 @@ export class AddProductComponent implements OnInit {
   ];
   form!: FormGroup;
   imageList: any[] = [];
-  constructor() { }
+  constructor(private http: HttpClient) { }
   ngOnInit(): void {
     this.initForm()
   }
@@ -38,11 +40,15 @@ export class AddProductComponent implements OnInit {
     })
   }
   onFileSelected = (event : any) => {
-    console.log(event.target.files[0]);
     const reader = new FileReader();
     reader.readAsDataURL(event.target.files[0]);
+    const formData = new FormData();
+    formData.append('file', event.target.files[0])
     reader.onload = (e : any) => {
       this.imageList.push(e.target.result)
+      this.http.post(`${API_URL}upload`, formData).subscribe((res) => {
+        console.log(res);
+      })
     }
   }
   onSubmit = () => {
