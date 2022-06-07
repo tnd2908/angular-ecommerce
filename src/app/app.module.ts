@@ -36,6 +36,7 @@ import { MatInputModule } from '@angular/material/input';
 import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
 import { BrandComponent } from './pages/admin/brand/brand.component';
 import { AddBrandComponent } from './pages/admin/add-brand/add-brand.component';
+import { EditCategoryComponent } from './pages/admin/edit-category/edit-category.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +56,7 @@ import { AddBrandComponent } from './pages/admin/add-brand/add-brand.component';
     AddCategoryComponent,
     BrandComponent,
     AddBrandComponent,
+    EditCategoryComponent,
   ],
   imports: [
     FormsModule,

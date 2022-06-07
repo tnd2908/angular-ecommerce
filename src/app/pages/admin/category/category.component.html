@@ -22,7 +22,7 @@
         </ng-template>
         <ng-template pTemplate="body" let-category>
           <tr>
-            <td>1</td>
+            <td>{{ category._id }}</td>
             <td>
               <img
                 [src]="category.icon"
@@ -40,6 +40,7 @@
                   type="button"
                   icon="pi pi-pencil"
                   class="p-button-sm p-button-success"
+                  routerLink="/admin/category/edit"
                 ></button>
                 <button
                   pButton
