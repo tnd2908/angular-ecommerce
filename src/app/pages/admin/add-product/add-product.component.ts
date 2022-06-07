@@ -6,28 +6,28 @@ import { API_URL } from 'src/app/utils/constant';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.scss']
+  styleUrls: ['./add-product.component.scss'],
 })
 export class AddProductComponent implements OnInit {
   brands: IBrand[] = [
     {
-      id: 'a',
+      _id: 'a',
       name: 'Apple',
-      logo: ''
+      logo: '',
     },
     {
-      id: 'b',
+      _id: 'b',
       name: 'Samsung',
-      logo: ''
-    }
+      logo: '',
+    },
   ];
   form!: FormGroup;
   imageList: any[] = [];
   constructor(private http: HttpClient) { }
   ngOnInit(): void {
-    this.initForm()
+    this.initForm();
   }
-  initForm(){
+  initForm() {
     this.form = new FormGroup({
       name: new FormControl('', Validators.required),
       price: new FormControl('', Validators.required),
@@ -36,8 +36,8 @@ export class AddProductComponent implements OnInit {
       category: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
       colors: new FormControl([], Validators.required),
-      rom: new FormControl([], Validators.required)
-    })
+      rom: new FormControl([], Validators.required),
+    });
   }
   onFileSelected = (event : any) => {
     const reader = new FileReader();
@@ -53,5 +53,5 @@ export class AddProductComponent implements OnInit {
   }
   onSubmit = () => {
     console.log(this.form.value);
-  }
+  };
 }

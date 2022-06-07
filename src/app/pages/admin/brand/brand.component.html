@@ -2,38 +2,38 @@
   <div class="row">
     <div class="col-12">
       <button
-        routerLink="/admin/category/add"
+        routerLink="/admin/brand/add"
         pButton
         pRipple
         type="button"
-        label="Thêm sản phẩm"
+        label="Thêm thương hiệu"
         class="p-button-raised p-button-danger mt-1"
       ></button>
     </div>
     <div class="col-12 mt-3">
-      <p-table [value]="categories" responsiveLayout="scroll">
+      <p-table [value]="brands" responsiveLayout="scroll">
         <ng-template pTemplate="header">
           <tr>
             <th style="padding-right: 60px">#</th>
-            <th class="category-title">Hình ảnh</th>
-            <th class="category-title">Loại Sản phẩm</th>
-            <th class="category-title">Thao tác</th>
+            <th class="brand-title">Hình ảnh</th>
+            <th class="brand-title">Tên thương hiệu</th>
+            <th class="brand-title">Thao tác</th>
           </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-category>
+        <ng-template pTemplate="body" let-brand>
           <tr>
-            <td>1</td>
+            <td>{{ brand._id }}</td>
             <td>
               <img
-                [src]="category.icon"
-                [alt]="category.name"
+                [src]="brand.logo"
+                [alt]="brand.name"
                 width="100"
-                class="shadow-4 category-image"
+                class="shadow-4 brand-image"
               />
             </td>
-            <td>{{ category.name }}</td>
+            <td>{{ brand.name }}</td>
             <td>
-              <div class="category-action">
+              <div class="brand-action">
                 <button
                   pButton
                   pRipple

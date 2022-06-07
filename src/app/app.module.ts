@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+<<<<<<< HEAD
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+=======
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+>>>>>>> 48452f66e3bbd0e21aa64ec5a16ee41f5b660973
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,20 +24,23 @@ import { CategoryComponent } from './pages/admin/category/category.component';
 import { AddProductComponent } from './pages/admin/add-product/add-product.component';
 
 // prime module
-import {TableModule} from 'primeng/table';
-import {ButtonModule} from 'primeng/button';
-import {RatingModule} from 'primeng/rating';
-import {RippleModule} from 'primeng/ripple';
-import {InputTextModule} from 'primeng/inputtext';
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import { RatingModule } from 'primeng/rating';
+import { RippleModule } from 'primeng/ripple';
+import { InputTextModule } from 'primeng/inputtext';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MultiSelectModule} from 'primeng/multiselect';
-// Mui
-import {MatSelectModule} from '@angular/material/select';
-import {MatStepperModule} from '@angular/material/stepper';
-import {MatButtonModule} from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+import { MultiSelectModule } from 'primeng/multiselect';
 
+// Mui
+import { MatSelectModule } from '@angular/material/select';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
+import { BrandComponent } from './pages/admin/brand/brand.component';
+import { AddBrandComponent } from './pages/admin/add-brand/add-brand.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +56,10 @@ import {MatInputModule} from '@angular/material/input';
     ProductComponent,
     ProductEditComponent,
     CategoryComponent,
-    AddProductComponent
+    AddProductComponent,
+    AddCategoryComponent,
+    BrandComponent,
+    AddBrandComponent,
   ],
   imports: [
     FormsModule,
@@ -71,6 +81,6 @@ import {MatInputModule} from '@angular/material/input';
     MultiSelectModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
