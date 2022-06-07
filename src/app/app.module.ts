@@ -25,6 +25,7 @@ import { RatingModule } from 'primeng/rating';
 import { RippleModule } from 'primeng/ripple';
 import { InputTextModule } from 'primeng/inputtext';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 // Mui
 import { MatSelectModule } from '@angular/material/select';
@@ -67,6 +68,7 @@ import { AddCategoryComponent } from './pages/admin/add-category/add-category.co
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MultiSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
