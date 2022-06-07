@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+<<<<<<< HEAD
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+=======
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+>>>>>>> 48452f66e3bbd0e21aa64ec5a16ee41f5b660973
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -63,6 +68,7 @@ import { EditCategoryComponent } from './pages/admin/edit-category/edit-category
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     ButtonModule,
     RippleModule,
     TableModule,
