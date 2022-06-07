@@ -9,27 +9,20 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class AddProductComponent implements OnInit {
   brands: IBrand[] = [
     {
+      id: 'a',
       name: 'Apple',
       logo: ''
     },
     {
+      id: 'b',
       name: 'Samsung',
       logo: ''
     }
   ];
   form!: FormGroup;
+  imageList: any[] = [];
   constructor() { }
   ngOnInit(): void {
-    this.brands = [
-      {
-        name: 'Apple',
-        logo: ''
-      },
-      {
-        name: 'Samsung',
-        logo: ''
-      }
-    ]
     this.initForm()
   }
   initForm(){
@@ -37,9 +30,21 @@ export class AddProductComponent implements OnInit {
       name: new FormControl('', Validators.required),
       price: new FormControl('', Validators.required),
       brands: new FormControl('', Validators.required),
+      file: new FormControl(null, Validators.required),
+      category: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
+      colors: new FormControl([], Validators.required),
+      rom: new FormControl([], Validators.required)
     })
   }
-
+  onFileSelected = (event : any) => {
+    console.log(event.target.files[0]);
+    const reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = (e : any) => {
+      this.imageList.push(e.target.result)
+    }
+  }
   onSubmit = () => {
     console.log(this.form.value);
   }
