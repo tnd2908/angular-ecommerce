@@ -1,46 +1,56 @@
-<div class="container-fluid" style="padding: 0;">
-    <div class="row">
-        <div class="admin-menu">
-            <div class="admin-info">
-                <div class="flex-mid pt-5 mb-3">
-                    <img class="admin-avatar" src="https://joeschmoe.io/api/v1/random" alt="">
-                </div>
-                <h6 style="font-size: 18px;" class="text-center pb-3 text-white">Hello Admin</h6>
-            </div>
-            <div class="logo">
-                <img src="assets/images/logo-horizontal.png" alt="" class="app-logo-admin">
-            </div>
-            <div routerLink="/admin" class="menu-item">
-                <i class="fas fa-home"></i>
-                <h6>Trang chủ</h6>
-            </div>
-            <div routerLink="/admin" class="menu-item">
-                <i class="fas fa-clipboard-list"></i>
-                <h6>Đơn hàng</h6>
-            </div>
-            <div routerLink="/admin/product" class="menu-item active">
-                <i class="fas fa-boxes"></i>
-                <h6>Sản phẩm</h6>
-            </div>
-            <div class="menu-item">
-                <i class="fas fa-th"></i>
-                <h6>Loại sản phẩm</h6>
-            </div>
-            <div class="menu-item">
-                <i class="fas fa-archway"></i>
-                <h6>Thương hiệu</h6>
-            </div>
-            <div class="menu-item">
-                <i class="fas fa-users"></i>
-                <h6>Người dùng</h6>
-            </div>
-            <div class="menu-item">
-                <i class="fas fa-sign-out-alt"></i>
-                <h6>Đăng xuất</h6>
-            </div>
+<div class="container-fluid" style="padding: 0">
+  <div class="row">
+    <div class="admin-menu">
+      <div class="admin-info">
+        <div class="flex-mid pt-5 mb-3">
+          <img
+            class="admin-avatar"
+            src="https://joeschmoe.io/api/v1/random"
+            alt=""
+          />
         </div>
-        <div class="admin-content">
-            <router-outlet></router-outlet>
-        </div>
+        <h6 style="font-size: 18px" class="text-center pb-3 text-white">
+          Hello Admin
+        </h6>
+      </div>
+      <div class="logo">
+        <img
+          src="assets/images/logo-horizontal.png"
+          alt=""
+          class="app-logo-admin"
+        />
+      </div>
+      <div routerLink="/admin" class="menu-item">
+        <i class="fas fa-home"></i>
+        <h6>Trang chủ</h6>
+      </div>
+      <div routerLink="/admin" class="menu-item">
+        <i class="fas fa-clipboard-list"></i>
+        <h6>Đơn hàng</h6>
+      </div>
+      <div routerLink="/admin/product" class="menu-item active">
+        <i class="fas fa-boxes"></i>
+        <h6>Sản phẩm</h6>
+      </div>
+      <div routerLink="/admin/category" class="menu-item">
+        <i class="fas fa-th"></i>
+        <h6>Loại sản phẩm</h6>
+      </div>
+      <div class="menu-item">
+        <i class="fas fa-archway"></i>
+        <h6>Thương hiệu</h6>
+      </div>
+      <div class="menu-item">
+        <i class="fas fa-users"></i>
+        <h6>Người dùng</h6>
+      </div>
+      <div class="menu-item">
+        <i class="fas fa-sign-out-alt"></i>
+        <h6>Đăng xuất</h6>
+      </div>
     </div>
+    <div class="admin-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>
