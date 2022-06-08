@@ -56,4 +56,7 @@ export class CategoryService {
       },
     ];
   };
+  getCategoryDetail = (id: string) => {
+    return this.getCategoryList().find((item) => item._id === id);
+  };
 }

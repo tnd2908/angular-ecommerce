@@ -38,6 +38,7 @@ import { AddCategoryComponent } from './pages/admin/add-category/add-category.co
 import { BrandComponent } from './pages/admin/brand/brand.component';
 import { AddBrandComponent } from './pages/admin/add-brand/add-brand.component';
 import { EditCategoryComponent } from './pages/admin/edit-category/edit-category.component';
+import { EditBrandComponent } from './pages/admin/edit-brand/edit-brand.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,6 +59,7 @@ import { EditCategoryComponent } from './pages/admin/edit-category/edit-category
     BrandComponent,
     AddBrandComponent,
     EditCategoryComponent,
+    EditBrandComponent,
   ],
   imports: [
     FormsModule,

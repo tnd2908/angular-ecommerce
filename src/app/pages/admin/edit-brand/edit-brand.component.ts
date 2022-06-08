@@ -1,34 +1,31 @@
-import { ICategory } from './../../../../interface/category/category';
+import { ActivatedRoute, Params } from '@angular/router';
+import { BrandService } from 'src/service/brand.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CategoryService } from 'src/service/category.service';
-import { ActivatedRoute, Params } from '@angular/router';
-
+import { IBrand } from 'src/interface/brand/brand';
 @Component({
-  selector: 'app-edit-category',
-  templateUrl: './edit-category.component.html',
-  styleUrls: ['./edit-category.component.scss'],
+  selector: 'app-edit-brand',
+  templateUrl: './edit-brand.component.html',
+  styleUrls: ['./edit-brand.component.scss'],
 })
-export class EditCategoryComponent implements OnInit {
+export class EditBrandComponent implements OnInit {
   form!: FormGroup;
   imageList: any[] = [];
   id!: string;
-  category!: ICategory;
+  brand!: IBrand;
 
-  constructor(
-    private service: CategoryService,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private service: BrandService, private route: ActivatedRoute) {}
   ngOnInit(): void {
     this.editForm();
   }
+
   editForm() {
     this.route.params.subscribe((param: Params) => {
       this.id = param['id'];
-      this.category = this.service.getCategoryDetail(this.id)!;
+      this.brand = this.service.getBrandDetail(this.id)!;
     });
     this.form = new FormGroup({
-      name: new FormControl(this.category.name, Validators.required),
+      name: new FormControl(this.brand.name, Validators.required),
     });
   }
   onFileSelected = (event: any) => {
