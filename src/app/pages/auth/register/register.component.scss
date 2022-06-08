@@ -53,3 +53,23 @@ input {
         background-color: #ea4335;
     }
 }
+.auth-layout {
+    width: 100%;
+    max-width: 600px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.spinner-border {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.error {
+    background-color: #fbc1c1;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+    p {
+        color: #AF3033;
+        margin-bottom: 0;
+    }
+}

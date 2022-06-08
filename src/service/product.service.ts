@@ -1,10 +1,13 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { API_URL } from 'src/app/utils/constant';
 import { productList } from 'src/dummy/data'
 
 @Injectable(
     { providedIn: 'root' }
 )
 export class ProductService {
+    constructor(private http: HttpClient) {}
     getProductList = () => {
         return productList.map((item) => {
             const star = Math.floor(Math.random() * (5 - 1) + 1)
@@ -13,5 +16,8 @@ export class ProductService {
     }
     getDetail = (id: number) => {
         return productList.find((item) => item.id === id);
+    }
+    addProduct = (data : any) => {
+        return this.http.post(`${API_URL}product/add-new`, data);
     }
 }

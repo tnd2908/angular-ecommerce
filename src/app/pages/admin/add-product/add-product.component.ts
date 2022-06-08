@@ -3,6 +3,7 @@ import { IBrand } from 'src/interface/brand/brand';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { API_URL } from 'src/app/utils/constant';
+import { ProductService } from 'src/service/product.service';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -23,7 +24,7 @@ export class AddProductComponent implements OnInit {
   ];
   form!: FormGroup;
   imageList: any[] = [];
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private service: ProductService) { }
   ngOnInit(): void {
     this.initForm();
   }
@@ -53,5 +54,9 @@ export class AddProductComponent implements OnInit {
   }
   onSubmit = () => {
     console.log(this.form.value);
+    const data = { ...this.form.value, images: this.imageList }
+    this.service.addProduct(data).subscribe((res) => {
+      console.log(res);
+    })
   };
 }

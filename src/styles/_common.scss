@@ -20,7 +20,22 @@
     justify-content: center;
     align-items: center;
 }
-
+@keyframes jump {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.07);
+    }
+}
+button:active {
+    animation: jump 0.5s;
+}
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    animation: none;
+}
 button:focus,button:active:focus,button.active:focus,
 button.focus,button:active.focus,button.active.focus {
     outline: none !important;
@@ -28,6 +43,7 @@ button.focus,button:active.focus,button.active.focus {
 .btn:focus,.btn:active:focus,.btn.active:focus,
 .btn.focus,.btn:active.focus,.btn.active.focus {
     outline: none !important;
+
 }
 .p-rating .p-rating-icon.pi-star-fill {
     color: #fadb14
