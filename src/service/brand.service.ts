@@ -46,4 +46,8 @@ export class BrandService {
       },
     ];
   };
+
+  getBrandDetail = (id: string) => {
+    return this.getBrandList().find((item) => item._id === id);
+  };
 }

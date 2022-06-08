@@ -40,7 +40,7 @@
                   type="button"
                   icon="pi pi-pencil"
                   class="p-button-sm p-button-success"
-                  routerLink="/admin/category/edit"
+                  [routerLink]="'/admin/category/edit/' + category._id"
                 ></button>
                 <button
                   pButton

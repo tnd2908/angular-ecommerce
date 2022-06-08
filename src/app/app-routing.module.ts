@@ -13,6 +13,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { BrandComponent } from './pages/admin/brand/brand.component';
 import { AddBrandComponent } from './pages/admin/add-brand/add-brand.component';
 import { EditCategoryComponent } from './pages/admin/edit-category/edit-category.component';
+import { EditBrandComponent } from './pages/admin/edit-brand/edit-brand.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -29,9 +30,10 @@ const routes: Routes = [
       { path: 'product/add', component: AddProductComponent },
       { path: 'category', component: CategoryComponent },
       { path: 'category/add', component: AddCategoryComponent },
-      { path: 'category/edit', component: EditCategoryComponent },
+      { path: 'category/edit/:id', component: EditCategoryComponent },
       { path: 'brand', component: BrandComponent },
       { path: 'brand/add', component: AddBrandComponent },
+      { path: 'brand/edit/:id', component: EditBrandComponent },
     ],
   },
 ];
