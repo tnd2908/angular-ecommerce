@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CategoryService } from 'src/service/category.service';
 import { ActivatedRoute, Params } from '@angular/router';
+import { API_URL } from 'src/app/utils/constant';
 
 @Component({
   selector: 'app-edit-category',
@@ -14,21 +15,23 @@ export class EditCategoryComponent implements OnInit {
   imageList: any[] = [];
   id!: string;
   category!: ICategory;
-
+  url = API_URL;
   constructor(
     private service: CategoryService,
     private route: ActivatedRoute
   ) {}
   ngOnInit(): void {
-    this.editForm();
+    this.initForm();
   }
-  editForm() {
+  initForm() {
     this.route.params.subscribe((param: Params) => {
       this.id = param['id'];
-      this.category = this.service.getCategoryDetail(this.id)!;
-    });
-    this.form = new FormGroup({
-      name: new FormControl(this.category.name, Validators.required),
+      this.service.getCategoryDetail(this.id)!.subscribe((res : any) => {
+        this.category = res.category
+        this.form = new FormGroup({
+          name: new FormControl(res.category.name, Validators.required),
+        });
+      });
     });
   }
   onFileSelected = (event: any) => {

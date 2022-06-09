@@ -22,10 +22,10 @@
         </ng-template>
         <ng-template pTemplate="body" let-brand>
           <tr>
-            <td>{{ brand._id }}</td>
+            <td>{{ brands.indexOf(brand) + 1 }}</td>
             <td>
               <img
-                [src]="brand.logo"
+                [src]="url+'upload/'+brand.logo"
                 [alt]="brand.name"
                 width="100"
                 class="shadow-4 brand-image"

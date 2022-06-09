@@ -7,15 +7,19 @@
             <div class="shadow-sm px-4 py-4">
                 <h4>Đăng nhập ngay</h4>
                 <p class="form__sub-title" style="color: silver;">Chào mừng bạn quay trở lại!</p>
-                <form>
+                <form [formGroup]="form" (submit)="onSubmit()">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email</label>
-                        <input placeholder="Nhập địa chỉ email của bạn" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input formControlName="email" placeholder="Nhập địa chỉ email của bạn" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Mật khẩu</label>
-                        <input placeholder="Nhập mật khẩu của bạn" type="password" class="form-control" id="exampleInputPassword1">
+                        <input formControlName="password" placeholder="Nhập mật khẩu của bạn" type="password" class="form-control" id="exampleInputPassword1">
                     </div>
+                    <p-dialog header="Thất bại" [(visible)]="isVisibleFail" [modal]="true" [style]="{width: '400px'}"
+                    [draggable]="true" [resizable]="true">
+                        <p><i class="fal fa-exclamation-triangle me-3"></i>Email đã tồn tại</p>
+                    </p-dialog>
                     <div class="mb-3">
                         <a class="form__reset-pw" href="">Quên mật khẩu?</a>
                     </div>

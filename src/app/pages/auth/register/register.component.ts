@@ -34,9 +34,9 @@ export class RegisterComponent implements OnInit {
   get phone() { return this.form.get('phone') }
   get fullName() { return this.form.get('fullName') }
   onSubmit = () => {
-    this.isLoading = false;
     this.isSubmit = true;
     if (this.form.valid) {
+      this.isLoading = true;
       this.authService.register(this.form.value).subscribe((res : any) => {
         if (res.success === true) {
           this.isVisibleSuccess = true;
@@ -45,6 +45,7 @@ export class RegisterComponent implements OnInit {
           this.isVisibleFail = true
           console.log(res);
         }
+        this.isLoading = false;
       })
     }
   }

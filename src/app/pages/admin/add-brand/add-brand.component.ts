@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { BrandService } from 'src/service/brand.service';
+import { UploadService } from 'src/service/upload.service';
 @Component({
   selector: 'app-add-brand',
   templateUrl: './add-brand.component.html',
@@ -7,8 +9,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AddBrandComponent implements OnInit {
   form!: FormGroup;
-  imageList: any[] = [];
-  constructor() {}
+  image!: string;
+  imageName!: string;
+  isLoading = false;
+  isVisibleSuccess = false;
+  isVisibleFail = false
+  constructor(private service: UploadService, private brandService: BrandService) {}
   ngOnInit(): void {
     this.initForm();
   }
@@ -22,10 +28,30 @@ export class AddBrandComponent implements OnInit {
     const reader = new FileReader();
     reader.readAsDataURL(event.target.files[0]);
     reader.onload = (e: any) => {
-      this.imageList.push(e.target.result);
+      this.image = e.target.result;
+      this.imageName = event.target.files[0].name
+      this.service.upload(event.target.files[0]).subscribe((res) => {
+        console.log(res);
+      });
     };
   };
   onSubmit = () => {
-    console.log(this.form.value);
+    if (this.form.valid && this.imageName !== '') {
+      this.isLoading = true
+      console.log(this.form.value);
+      this.brandService.addBrand({...this.form.value, logo: this.imageName}).subscribe((res : any) => {
+        this.isLoading = false;
+        console.log(res);
+        if (res.success === true) {
+          this.form.reset();
+          this.image = '';
+          this.imageName = '';
+          this.isVisibleSuccess = true;
+        } else {
+          this.isLoading = false;
+          this.isVisibleFail = true;
+        }
+      })
+    }
   };
 }

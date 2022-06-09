@@ -40,6 +40,18 @@
         }
     }
 }
+.color-block {
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+    border-radius: 4px;
+}
+.selectedColors {
+    background-color: #434343;
+    height: 30px;
+    width: 30px;
+    z-index: 999;
+}
 .btn-upload {
     padding: 10px 20px;
     background-color: white;

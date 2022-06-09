@@ -6,7 +6,7 @@
         pButton
         pRipple
         type="button"
-        label="Thêm sản phẩm"
+        label="Thêm loại sản phẩm"
         class="p-button-raised p-button-danger mt-1"
       ></button>
     </div>
@@ -22,10 +22,10 @@
         </ng-template>
         <ng-template pTemplate="body" let-category>
           <tr>
-            <td>{{ category._id }}</td>
+            <td>{{ categories.indexOf(category) + 1 }}</td>
             <td>
               <img
-                [src]="category.icon"
+                [src]="url+'upload/'+category.icon"
                 [alt]="category.name"
                 width="100"
                 class="shadow-4 category-image"

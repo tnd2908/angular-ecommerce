@@ -17,7 +17,6 @@
                 </mat-form-field>
               </div>
               <div class="col-md-12">
-                <img src="{{ brand.logo }}" class="brand-logo" />
                 <label for="file">
                   <p class="btn-upload">
                     <i class="fal fa-cloud-upload me-2"></i>Sửa ảnh
@@ -29,6 +28,9 @@
                   type="file"
                   class="input-file"
                 />
+              </div>
+              <div class="col-12">
+                <img src="{{url+'upload/'+brand.logo}}" class="brand-logo" />
               </div>
               <div class="col-12">
                 <div class="d-flex">

@@ -4,31 +4,34 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { API_URL } from 'src/app/utils/constant';
 import { ProductService } from 'src/service/product.service';
+import { CategoryService } from 'src/service/category.service';
+import { BrandService } from 'src/service/brand.service';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.scss'],
 })
 export class AddProductComponent implements OnInit {
-  brands: IBrand[] = [
-    {
-      _id: 'a',
-      name: 'Apple',
-      logo: '',
-    },
-    {
-      _id: 'b',
-      name: 'Samsung',
-      logo: '',
-    },
-  ];
+  brands!: any[];
+  categories! : any[];
   form!: FormGroup;
   imageList: any[] = [];
-  constructor(private http: HttpClient, private service: ProductService) { }
+  colors: any[] = [
+    { name: 'black', value: '#000'},
+    { name: 'red', value: 'red'},
+    { name: 'black', value: '#ff0'},
+    { name: 'red', value: 'blue'},
+    { name: 'black', value: 'green'},
+    { name: 'red', value: 'grey'},
+  ]
+  selectedColors : any[] = [];
+  myStyle={"background-color":"blue"}
+  constructor(private http: HttpClient, private service: ProductService, private categoryService : CategoryService, private brandService: BrandService) { }
   ngOnInit(): void {
     this.initForm();
+    this.getData();
   }
-  initForm() {
+  initForm = () => {
     this.form = new FormGroup({
       name: new FormControl('', Validators.required),
       price: new FormControl('', Validators.required),
@@ -38,6 +41,7 @@ export class AddProductComponent implements OnInit {
       description: new FormControl('', Validators.required),
       colors: new FormControl([], Validators.required),
       rom: new FormControl([], Validators.required),
+      totalQuantity: new FormControl(0)
     });
   }
   onFileSelected = (event : any) => {
@@ -51,6 +55,14 @@ export class AddProductComponent implements OnInit {
         console.log(res);
       })
     }
+  }
+  getData = () => {
+    this.categoryService.getCategoryList().subscribe((res : any) => {
+      this.categories = res.categories;
+    })
+    this.brandService.getBrandList().subscribe((res : any) => {
+      this.brands = res.brands
+    })
   }
   onSubmit = () => {
     console.log(this.form.value);

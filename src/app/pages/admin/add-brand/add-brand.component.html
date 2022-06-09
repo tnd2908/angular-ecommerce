@@ -6,6 +6,16 @@
           <div class="container-fluid">
             <div class="row">
               <h2>Thêm thương hiệu mới</h2>
+              <p-dialog header="Thành công" [(visible)]="isVisibleSuccess" [modal]="true" [style]="{width: '400px'}"
+              [draggable]="true" [resizable]="true">
+              <div class="d-flex flex-column">
+                  <p><i class="fal fa-check-circle me-2"></i>Thêm thương hiệu thành công</p>
+              </div>
+              </p-dialog>
+              <p-dialog header="Thất bại" [(visible)]="isVisibleFail" [modal]="true" [style]="{width: '400px'}"
+              [draggable]="true" [resizable]="true">
+                  <p><i class="fal fa-exclamation-triangle me-3"></i>Thương hiệu này đã tồn tại</p>
+              </p-dialog>
               <div class="col-md-12">
                 <mat-form-field appearance="fill" class="w-100">
                   <mat-label>Tên thương hiệu</mat-label>
@@ -19,7 +29,13 @@
               <div class="col-md-12">
                 <label for="file">
                   <p class="btn-upload">
-                    <i class="fal fa-cloud-upload me-2"></i>Thêm ảnh
+                    <i class="fal fa-cloud-upload me-2"></i>
+                    <ng-container *ngIf="image; else elseTemplate">
+                      Thay đổi ảnh
+                    </ng-container>
+                    <ng-template #elseTemplate>
+                      Thêm ảnh
+                    </ng-template>
                   </p>
                 </label>
                 <input
@@ -33,8 +49,8 @@
                 <div class="d-flex">
                   <div class="box">
                     <img
+                    *ngIf="image"
                       class="image-upload"
-                      *ngFor="let image of imageList"
                       src="{{ image }}"
                       alt=""
                     />
