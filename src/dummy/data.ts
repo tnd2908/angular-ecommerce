@@ -72,3 +72,12 @@ export const productList: IProduct[] = [
       'https://cdn.tgdd.vn/Products/Images/42/230529/iphone-13-pro-max-xanh-la-thumb-600x600.jpg',
   },
 ];
+export const romData = [
+  { name: 'Không có', value: null },
+  { name: '32Gb', value: '32Gb'},
+  { name: '64Gb', value: '64Gb'},
+  { name: '128Gb', value: '128Gb'},
+  { name: '256Gb', value: '256Gb'},
+  { name: '512Gb', value: '512Gb'},
+  { name: '1Tb', value: '1Tb'},
+]

@@ -6,37 +6,75 @@
                     <div class="container-fluid">
                         <div class="row">
                             <h2>Thêm sản phẩm mới</h2>
+                            <p-dialog header="Thành công" [(visible)]="isVisibleSuccess" [modal]="true"
+                                [style]="{width: '400px'}" [draggable]="true" [resizable]="true">
+                                <div class="d-flex flex-column">
+                                    <p><i class="fal fa-check-circle me-2"></i>Thêm thương hiệu thành công</p>
+                                </div>
+                            </p-dialog>
+                            <p-dialog header="Thất bại" [(visible)]="isVisibleFail" [modal]="true"
+                                [style]="{width: '400px'}" [draggable]="true" [resizable]="true">
+                                <p><i class="fal fa-exclamation-triangle me-3"></i>Thương hiệu này đã tồn tại</p>
+                            </p-dialog>
                             <div class="col-md-12">
                                 <mat-form-field appearance="fill" class="w-100">
                                     <mat-label>Tên sản phẩm</mat-label>
                                     <input formControlName="name" placeholder="Nhập tên sản phẩm" matInput>
                                 </mat-form-field>
+                                <div class="error" role="alert" *ngIf="name!.invalid && isSubmit">
+                                    <p><i class="fal fa-exclamation-triangle me-2"></i>
+                                        Vui lòng nhập tên sản phẩm
+                                    </p>
+                                </div>
                             </div>
                             <div class="col-md-12">
                                 <mat-form-field id="category" appearance="fill" class="w-100">
                                     <mat-label>Loại sản phẩm</mat-label>
                                     <mat-select formControlName="category">
-                                      <mat-option *ngFor="let brand of brands" value="brand.id"> {{brand.name}} </mat-option>
+                                        <mat-option *ngFor="let category of categories" value="{{category._id}}">
+                                            {{category.name}} </mat-option>
                                     </mat-select>
-                                  </mat-form-field>
-                            </div>
-                            <div class="col-md-6">
-                                <mat-form-field appearance="fill" class="w-100">
-                                    <mat-label>Giá bán</mat-label>
-                                    <input formControlName="price" matInput>
                                 </mat-form-field>
+                                <div class="error" role="alert" *ngIf="category!.invalid && isSubmit">
+                                    <p><i class="fal fa-exclamation-triangle me-2"></i>
+                                        Vui lòng chọn loại sản phẩm
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <mat-form-field id="brands" appearance="fill" class="w-100">
+                                    <mat-label>Thương hiệu</mat-label>
+                                    <mat-select formControlName="brand">
+                                        <mat-option *ngFor="let brand of brands" value="{{brand._id}}"> {{brand.name}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <div class="error" role="alert" *ngIf="totalQuantity!.invalid && isSubmit">
+                                    <p><i class="fal fa-exclamation-triangle me-2"></i>
+                                        Vui lòng chọn thương hiệu của sản phẩm
+                                    </p>
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <mat-form-field appearance="fill" class="w-100">
                                     <mat-label>Giá bán</mat-label>
+                                    <input type="number" formControlName="price" matInput>
+                                </mat-form-field>
+                                <div class="error" role="alert" *ngIf="totalQuantity!.invalid && isSubmit">
+                                    <p><i class="fal fa-exclamation-triangle me-2"></i>
+                                        Giá bán phải lớn hơn 0
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field appearance="fill" class="w-100">
+                                    <mat-label>Số lượng</mat-label>
                                     <input formControlName="totalQuantity" matInput>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-6">
-                                <p-multiSelect formControlName="brands" [options]="brands" defaultLabel="Thương hiệu" optionLabel="name" display="chip"></p-multiSelect>
-                            </div>
-                            <div class="col-md-6">
-                                <p-multiSelect formControlName="colors" [options]="colors" defaultLabel="Màu sắc" optionLabel="name" display="chip">
+                                <p-multiSelect formControlName="colors" [options]="colors" defaultLabel="Màu sắc"
+                                    optionLabel="name" display="chip">
                                     <ng-template let-color pTemplate="item">
                                         <div class="d-flex align-items-center">
                                             <div class="color-block" [style.background-color]="color.value"></div>
@@ -46,13 +84,47 @@
                                 </p-multiSelect>
                             </div>
                             <div class="col-md-6">
-                                <p-multiSelect formControlName="rom" [options]="brands" defaultLabel="Dung lượng" optionLabel="name" display="chip"></p-multiSelect>
+                                <p-multiSelect formControlName="rom" [options]="rom"
+                                    defaultLabel="Dung lượng" optionLabel="name" display="chip"></p-multiSelect>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field appearance="fill" class="w-100">
+                                    <mat-label>Ram</mat-label>
+                                    <input formControlName="ram" placeholder="Ram" matInput>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3" style="padding-right: 0;">
+                                <mat-form-field appearance="fill" style="width: 100%">
+                                    <mat-label>Số tiền giảm</mat-label>
+                                    <input formControlName="discountPrice" matInput>
+                                </mat-form-field>
+                                <div class="error" role="alert" *ngIf="discountPrice!.invalid && isSubmit">
+                                    <p><i class="fal fa-exclamation-triangle me-2"></i>
+                                        Giá bán phải lớn hơn 0
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-3" style="padding-left: 0;">
+                                <mat-form-field id="brands" appearance="fill" style="width: 100%">
+                                    <mat-label>Giảm giá</mat-label>
+                                    <mat-select formControlName="typeOfSale">
+                                        <mat-option *ngFor="let sale of saleOff" value="{{sale.value}}">
+                                            {{sale.name}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
                             </div>
                             <div class="col-md-12">
                                 <mat-form-field style="width: 100%;" appearance="fill">
                                     <mat-label>Giới thiệu</mat-label>
-                                    <textarea formControlName="description" rows="4" required style="width: 100%;" matInput></textarea>
-                                  </mat-form-field>
+                                    <textarea formControlName="description" rows="4" required style="width: 100%;"
+                                        matInput></textarea>
+                                </mat-form-field>
+                                <div class="error" role="alert" *ngIf="description!.invalid && isSubmit">
+                                    <p><i class="fal fa-exclamation-triangle me-2"></i>
+                                        Vui lòng nhập giới thiệu sản phẩm
+                                    </p>
+                                </div>
                             </div>
                             <div class="col-md-12">
                                 <label for="file">

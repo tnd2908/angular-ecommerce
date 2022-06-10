@@ -45,6 +45,7 @@
     height: 20px;
     margin: 0 5px;
     border-radius: 4px;
+    border: 1px solid #eee;
 }
 .selectedColors {
     background-color: #434343;
@@ -90,4 +91,20 @@
 }
 .p-multiselect .p-multiselect-label {
     font-family: roboto;
+}
+.p-multiselect .p-multiselect-label {
+    padding: 14.5px;
+}
+.error {
+    background-color: #fbc1c1;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    p {
+        color: #AF3033;
+        margin-bottom: 0;
+    }
+}
+.mat-select {
+    padding-top: 3px;
 }
