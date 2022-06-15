@@ -40,6 +40,12 @@ import { BrandComponent } from './pages/admin/brand/brand.component';
 import { AddBrandComponent } from './pages/admin/add-brand/add-brand.component';
 import { EditCategoryComponent } from './pages/admin/edit-category/edit-category.component';
 import { EditBrandComponent } from './pages/admin/edit-brand/edit-brand.component';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { en_US } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+
+registerLocaleData(en);
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,7 +88,7 @@ import { EditBrandComponent } from './pages/admin/edit-brand/edit-brand.componen
     MultiSelectModule,
     DialogModule,
   ],
-  providers: [],
+  providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
