@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IBrand } from 'src/interface/brand/brand';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { API_URL } from 'src/app/utils/constant';
 import { ProductService } from 'src/service/product.service';
@@ -25,14 +25,6 @@ export class AddProductComponent implements OnInit {
     { name: 'Grey', value: 'grey'},
     { name: 'Red', value: 'red'},
   ]
-  rom: any[] = romData;
-  selectedRom: any = {
-    name: '', value: ''
-  };
-  saleOff : any[] = [
-    { name: 'Giảm giá', value: true },
-    { name: 'Không giảm giá', value: false },
-  ]
   isVisibleFail = false;
   isVisibleSuccess = false;
   isLoading = false;
@@ -40,51 +32,41 @@ export class AddProductComponent implements OnInit {
   constructor(private http: HttpClient, private service: ProductService, private categoryService : CategoryService, private brandService: BrandService) { }
   ngOnInit(): void {
     this.initForm();
+    this.onAdd();
     this.getData();
 
   }
-  onRomChange = (data : any) => {
-    console.log(21);
-  }
-  get totalQuantity() { return this.form.get('totalQuantity') }
+  get totalQuantity() { return (<FormArray>this.form.get('totalQuantity')).controls }
   get name() { return this.form.get('name') }
   get category() { return this.form.get('category') }
   get brand() { return this.form.get('brand') }
-  get price() { return this.form.get('price') }
+  get price() { return (<FormArray>this.form.get('price')).controls }
+  get rom() { return (<FormArray>this.form.get('rom')).controls }
   get description() { return this.form.get('description') }
   get discountPrice() { return this.form.get('discountPrice') }
   initForm = () => {
-    const sale = null;
     this.form = new FormGroup({
       name: new FormControl('', Validators.required),
-      price: new FormControl('', [Validators.required, Validators.pattern(/^(([0-9]*[1-9][0-9]*([.][0-9]+)?)|([0]+[.][0-9]*[1-9][0-9]*))$/)]),
       brand: new FormControl('', Validators.required),
       category: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
       colors: new FormControl([], Validators.required),
-      rom: new FormControl([], Validators.required),
-      totalQuantity: new FormControl(0, [Validators.required, Validators.pattern(/^(([0-9]*[1-9][0-9]*([.][0-9]+)?)|([0]+[.][0-9]*[1-9][0-9]*))$/)]),
-      ram: new FormControl(''),
-      discountPrice: sale 
-        ? new FormControl(null, [ Validators.required, Validators.pattern(/\b([0-9]|[1-9][0-9]|100)\b/)]) 
-        : new FormControl(),
-      typeOfSale: new FormControl({ name: 'Không giảm giá', value: null })
+      rom: new FormArray([], Validators.required),
+      totalQuantity: new FormArray([]),
+      ram: new FormArray([]),
+      price: new FormArray([]),
     });
-    this.form.get("rom")!.valueChanges.subscribe((x : any)=> {
-      console.log(x);
-      if (!x.length) {
-        this.rom = romData;
-      }
-      x.forEach((element : any) => {
-        if (element.value === null) {
-          console.log(1);
-          this.rom = romData.filter(item => item.value === null)
-        }
-      });
-    })
-    this
   }
-
+  onAdd = () => {
+    const price = new FormControl(0, [Validators.required, Validators.pattern(/^(([0-9]*[1-9][0-9]*([.][0-9]+)?)|([0]+[.][0-9]*[1-9][0-9]*))$/)])
+    const totalQuantity = new FormControl(0, [Validators.required, Validators.pattern(/^(([0-9]*[1-9][0-9]*([.][0-9]+)?)|([0]+[.][0-9]*[1-9][0-9]*))$/)])
+    const rom = new FormControl('', [Validators.required]);
+    const ram = new FormControl('', Validators.required);
+    (<FormArray>this.form.get('price')).push(price);
+    (<FormArray>this.form.get('rom')).push(rom);
+    (<FormArray>this.form.get('totalQuantity')).push(totalQuantity);
+    (<FormArray>this.form.get('ram')).push(ram);
+  }
   onFileSelected = (event : any) => {
     const reader = new FileReader();
     reader.readAsDataURL(event.target.files[0]);
@@ -106,15 +88,25 @@ export class AddProductComponent implements OnInit {
       this.brands = res.brands
     })
   }
+  onRemove(i : any) {
+    (<FormArray>this.form.get('price')).removeAt(i);
+    (<FormArray>this.form.get('totalQuantity')).removeAt(i);
+    (<FormArray>this.form.get('rom')).removeAt(i);
+    (<FormArray>this.form.get('ram')).removeAt(i);
+  }
   onSubmit = () => {
     console.log(this.form.value);
     this.isSubmit = true
     const data = { ...this.form.value, images: this.imageNameList }
+    console.log(data.brand);
+    
     if (this.form.valid) {
+      this.isLoading = true;
       this.service.addProduct(data).subscribe((res : any) => {
-        console.log(res);
+        this.isLoading = false;
         if (res.success === true) {
           this.isVisibleSuccess = true;
+          this.form.reset();
         } else {
           this.isVisibleFail = true
         }

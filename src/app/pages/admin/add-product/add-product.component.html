@@ -1,9 +1,9 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <div class="px-2 py-5 bg-white form-container">
+            <div class="px-2 py-5 bg-white form-container" >
                 <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
-                    <div class="container-fluid">
+                    <div class="container-fluid" style="overflow: visible;">
                         <div class="row">
                             <h2>Thêm sản phẩm mới</h2>
                             <p-dialog header="Thành công" [(visible)]="isVisibleSuccess" [modal]="true"
@@ -41,35 +41,13 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <mat-form-field id="brands" appearance="fill" class="w-100">
                                     <mat-label>Thương hiệu</mat-label>
                                     <mat-select formControlName="brand">
                                         <mat-option *ngFor="let brand of brands" value="{{brand._id}}"> {{brand.name}}
                                         </mat-option>
                                     </mat-select>
-                                </mat-form-field>
-                                <div class="error" role="alert" *ngIf="totalQuantity!.invalid && isSubmit">
-                                    <p><i class="fal fa-exclamation-triangle me-2"></i>
-                                        Vui lòng chọn thương hiệu của sản phẩm
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <mat-form-field appearance="fill" class="w-100">
-                                    <mat-label>Giá bán</mat-label>
-                                    <input type="number" formControlName="price" matInput>
-                                </mat-form-field>
-                                <div class="error" role="alert" *ngIf="totalQuantity!.invalid && isSubmit">
-                                    <p><i class="fal fa-exclamation-triangle me-2"></i>
-                                        Giá bán phải lớn hơn 0
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <mat-form-field appearance="fill" class="w-100">
-                                    <mat-label>Số lượng</mat-label>
-                                    <input formControlName="totalQuantity" matInput>
                                 </mat-form-field>
                             </div>
                             <div class="col-md-6">
@@ -83,37 +61,6 @@
                                     </ng-template>
                                 </p-multiSelect>
                             </div>
-                            <div class="col-md-6">
-                                <p-multiSelect formControlName="rom" [options]="rom"
-                                    defaultLabel="Dung lượng" optionLabel="name" display="chip"></p-multiSelect>
-                            </div>
-                            <div class="col-md-6">
-                                <mat-form-field appearance="fill" class="w-100">
-                                    <mat-label>Ram</mat-label>
-                                    <input formControlName="ram" placeholder="Ram" matInput>
-                                </mat-form-field>
-                            </div>
-                            <div class="col-md-3" style="padding-right: 0;">
-                                <mat-form-field appearance="fill" style="width: 100%">
-                                    <mat-label>Số tiền giảm</mat-label>
-                                    <input formControlName="discountPrice" matInput>
-                                </mat-form-field>
-                                <div class="error" role="alert" *ngIf="discountPrice!.invalid && isSubmit">
-                                    <p><i class="fal fa-exclamation-triangle me-2"></i>
-                                        Giá bán phải lớn hơn 0
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-md-3" style="padding-left: 0;">
-                                <mat-form-field id="brands" appearance="fill" style="width: 100%">
-                                    <mat-label>Giảm giá</mat-label>
-                                    <mat-select formControlName="typeOfSale">
-                                        <mat-option *ngFor="let sale of saleOff" value="{{sale.value}}">
-                                            {{sale.name}}
-                                        </mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-                            </div>
                             <div class="col-md-12">
                                 <mat-form-field style="width: 100%;" appearance="fill">
                                     <mat-label>Giới thiệu</mat-label>
@@ -126,7 +73,63 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-12">
+                                <button type="button" (click)="onAdd()" class="btn-add-field mb-2">Thêm phiên bản</button>
+                            </div>
+                            <div class="container-fluid" style="overflow: visible;">
+                                <div class="row">
+                                    <div class="col-md-3" formArrayName="rom">
+                                        <div *ngFor="let item of rom; let i = index" style="border-bottom: 1px solid silver; margin-bottom: 10px;">
+                                            <p style="margin: 5px 0;">Dung lượng:</p>
+                                            <input class="mb-3" placeholder="Số lượng" type="number" [formControlName]="i"
+                                                style="height: 45px;">
+                                            <div class="error" role="alert" *ngIf="item!.invalid && isSubmit">
+                                                <p><i class="fal fa-exclamation-triangle me-2"></i>
+                                                    Vui lòng nhập dung lượng của sản phẩm
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3" formArrayName="ram" >
+                                        <div *ngFor="let item of rom; let i = index" style="border-bottom: 1px solid silver; margin-bottom: 10px;">
+                                            <p style="margin: 5px 0;">Ram:</p>
+                                            <input class="mb-3" placeholder="Số lượng" type="number" [formControlName]="i"
+                                                style="height: 45px;">
+                                            <div class="error" role="alert" *ngIf="item!.invalid && isSubmit">
+                                                <p><i class="fal fa-exclamation-triangle me-2"></i>
+                                                    Vui lòng nhập Ram của sản phẩm
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3" formArrayName="price">
+                                        <div *ngFor="let item of price; let i = index"  style="border-bottom: 1px solid silver; margin-bottom: 10px;">
+                                            <p style="margin: 5px 0;">Giá:</p>
+                                            <input class="mb-3" placeholder="Giá bán" type="number" [formControlName]="i"
+                                                style="height: 45px;">
+                                            <div class="error" role="alert" *ngIf="item!.invalid && isSubmit">
+                                                <p><i class="fal fa-exclamation-triangle me-2"></i>
+                                                    Giá bán phải lớn hơn 0
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3" formArrayName="totalQuantity">
+                                        <div *ngFor="let item of totalQuantity; let i = index"  style="border-bottom: 1px solid silver; margin-bottom: 10px; position: relative;">
+                                            <p style="margin: 5px 0;">Số lượng:</p>
+                                            <input class="mb-3" placeholder="Số lượng" type="number" [formControlName]="i"
+                                                style="height: 45px;">
+                                            <div class="error" role="alert" *ngIf="item!.invalid && isSubmit">
+                                                <p><i class="fal fa-exclamation-triangle me-2"></i>
+                                                    Số lượng phải lớn hơn 0
+                                                </p>
+                                            </div>
+                                            <button class="btn-delete" type="button" (click)="onRemove(i)"><i class="fal fa-minus"></i> </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
                                 <label for="file">
                                     <p class="btn-upload"><i class="fal fa-cloud-upload me-2"></i>Thêm ảnh</p>
                                 </label>
@@ -143,7 +146,14 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button class="btn-submit">Xác nhận</button>
+                                <button [disabled]="isLoading || !form.valid" type="submit" class="btn-submit">
+                                    <span *ngIf="!isLoading; else loading">Xác nhận</span>
+                                    <ng-template #loading>
+                                        <div class="spinner-border spinner-border-md text-light" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                        </div>
+                                    </ng-template>
+                                </button>
                             </div>
                         </div>
                     </div>
