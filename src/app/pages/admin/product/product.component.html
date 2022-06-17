@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <button routerLink="/admin/product/add" pButton pRipple type="button" label="New Product" class="p-button-raised p-button-danger mt-1"></button>
+            <button routerLink="/admin/product/add" pButton pRipple type="button" label="Thêm sản phẩm mới" class="p-button-raised p-button-danger mt-1"></button>
         </div>
         <div class="col-12 mt-3">
             <p-table [value]="products" responsiveLayout="scroll">
@@ -23,13 +23,13 @@
                 <ng-template pTemplate="body" let-product>
                     <tr>
                         <td>{{product.name}}</td>
-                        <td><img [src]="product.imagePath" [alt]="product.name" width="100" class="shadow-4" /></td>
+                        <td><img [src]="url+'upload/'+product.images[0]" [alt]="product.name" width="100" class="shadow-4" /></td>
                         <td>{{product.price | currency:'VND'}}</td>
-                        <td>{{product.category}}</td>
+                        <td>{{product.totalQuantity}}</td>
                         <td><p-rating [ngModel]="4" [readonly]="true" [cancel]="false"></p-rating></td>
-                        <td>
-                            <div class="d-flex justify-content-around">
-                                <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-sm p-button-success"></button>
+                        <td style="width: 120px">
+                            <div style="width: 120px" class="d-flex justify-content-around">
+                                <button [routerLink]="'/admin/product/edit/'+product._id" pButton pRipple type="button" icon="pi pi-pencil" class="p-button-sm p-button-success"></button>
                                 <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-sm p-button-danger"></button>
                             </div>
                         </td>

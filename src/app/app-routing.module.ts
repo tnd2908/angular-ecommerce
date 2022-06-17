@@ -14,6 +14,7 @@ import { BrandComponent } from './pages/admin/brand/brand.component';
 import { AddBrandComponent } from './pages/admin/add-brand/add-brand.component';
 import { EditCategoryComponent } from './pages/admin/edit-category/edit-category.component';
 import { EditBrandComponent } from './pages/admin/edit-brand/edit-brand.component';
+import { ProductEditComponent } from './pages/admin/product-edit/product-edit.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
     children: [
       { path: 'product', component: ProductComponent },
       { path: 'product/add', component: AddProductComponent },
+      { path: 'product/edit/:id', component: ProductEditComponent },
       { path: 'category', component: CategoryComponent },
       { path: 'category/add', component: AddCategoryComponent },
       { path: 'category/edit/:id', component: EditCategoryComponent },

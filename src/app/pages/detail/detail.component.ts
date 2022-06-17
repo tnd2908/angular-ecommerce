@@ -9,7 +9,7 @@ import { ProductService } from 'src/service/product.service';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
-  id!: number
+  id!: String
   relatedProductList!: any[]
   constructor(private service : ProductService, private route: ActivatedRoute) { }
   @Input() product! : IProduct;
@@ -17,9 +17,13 @@ export class DetailComponent implements OnInit {
   ngOnInit(): void {
     window.scrollTo(0, 0);
     this.route.params.subscribe((param : Params) => {
-      this.id = +param['id'];
-      this.product = this.service.getDetail(this.id)!;
+      this.id = param['id'];
+      this.service.getDetail(this.id).subscribe((res : any) => {
+        this.product = res.data
+      });
     })
-    this.relatedProductList = this.service.getProductList().slice(1,4);
+    // this.service.getProductList().subscribe(() => {
+    //   this.relatedProductList
+    // })
   }
 }

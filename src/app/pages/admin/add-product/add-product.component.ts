@@ -98,7 +98,7 @@ export class AddProductComponent implements OnInit {
     console.log(this.form.value);
     this.isSubmit = true
     const data = { ...this.form.value, images: this.imageNameList }
-    console.log(data.brand);
+    console.log(data.description);
     
     if (this.form.valid) {
       this.isLoading = true;
@@ -106,6 +106,7 @@ export class AddProductComponent implements OnInit {
         this.isLoading = false;
         if (res.success === true) {
           this.isVisibleSuccess = true;
+          this.isSubmit = false;
           this.form.reset();
         } else {
           this.isVisibleFail = true

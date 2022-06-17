@@ -1,4 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Params } from '@angular/router';
+import { API_URL } from 'src/app/utils/constant';
+import { BrandService } from 'src/service/brand.service';
+import { CategoryService } from 'src/service/category.service';
+import { ProductService } from 'src/service/product.service';
 
 @Component({
   selector: 'app-product-edit',
@@ -7,9 +14,100 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductEditComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: ProductService, private route: ActivatedRoute, private cateService: CategoryService, private brandService: BrandService, private http: HttpClient) { }
+  id!: String;
+  product: any;
+  form!: FormGroup;
+  imageList: any[] = [];
+  imageNameList: any[] = [];
+  categories: any[] = [];
+  brands: any[] = [];
+  colors: any[] = [
+    { name: 'Black', value: '#000'},
+    { name: 'White', value: 'white'},
+    { name: 'Silver', value: 'silver'},
+    { name: 'Grey', value: 'grey'},
+    { name: 'Red', value: 'red'},
+  ]
+  isVisibleFail = false;
+  isVisibleSuccess = false;
+  isLoading = false;
+  isSubmit = false;
+
+  get totalQuantity() { return this.form.get('totalQuantity')}
+  get name() { return this.form.get('name') }
+  get category() { return this.form.get('category') }
+  get brand() { return this.form.get('brand') }
+  get price() { return this.form.get('price') }
+  get rom() { return this.form.get('price') }
+  get description() { return this.form.get('description') }
+  get discountPrice() { return this.form.get('discountPrice') }
 
   ngOnInit(): void {
+    this.getData()
+    this.initForm();
+    this.route.params.subscribe((param : Params) => {
+      this.id = param['id'];
+      this.service.getDetail(this.id as String).subscribe((res : any) => {
+        this.product = res.data;
+        const { name, price, description, category, brand, colors, ram, rom, totalQuantity } = res.data
+        console.log(res.data);
+        this.imageList = res.data.images.map((item:any) => {
+          return `${API_URL}upload/${item}`
+        })
+        this.imageNameList = res.data.images
+        this.form.patchValue({
+          name: name,
+          category: category._id,
+          brand: brand._id,
+          colors: colors.map((item : any) => {return { name: item.name, value: item.value }}),
+          description,
+          price,
+          ram,
+          rom,
+          totalQuantity
+         })
+      });
+    })
   }
-
+  initForm = () => {
+    this.form = new FormGroup({
+      name: new FormControl('', Validators.required),
+      brand: new FormControl('', Validators.required),
+      category: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
+      colors: new FormControl([], Validators.required),
+      rom: new FormControl(0, Validators.required),
+      totalQuantity: new FormControl(0, Validators.required),
+      ram: new FormControl(0, Validators.required),
+      price: new FormControl(0, Validators.required),
+    });
+  }
+  getData = () => {
+    this.cateService.getCategoryList().subscribe((res : any) => {
+      this.categories = res.categories;
+    })
+    this.brandService.getBrandList().subscribe((res : any) => {
+      this.brands = res.brands
+    })
+  }
+  onFileSelected = (event : any) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    const formData = new FormData();
+    formData.append('file', event.target.files[0])
+    reader.onload = (e : any) => {
+      this.imageList.push(e.target.result)
+      this.imageNameList.push(event.target.files[0].name)
+      this.http.post(`${API_URL}upload`, formData).subscribe((res : any) => {
+        console.log(res);
+      })
+    }
+  }
+  onDeleteImage = (image: any) => {
+    console.log(image);
+  }
+  onSubmit = () => {
+    console.log(this.imageNameList);
+  }
 }
