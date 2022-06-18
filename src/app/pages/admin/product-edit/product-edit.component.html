@@ -117,58 +117,6 @@
                                     </p>
                                 </div>
                             </div>
-                            <!-- <div class="container-fluid" style="overflow: visible;">
-                                <div class="row">
-                                    <div class="col-md-3" formArrayName="rom">
-                                        <div *ngFor="let item of rom; let i = index" style="border-bottom: 1px solid silver; margin-bottom: 10px;">
-                                            <p style="margin: 5px 0;">Dung lượng:</p>
-                                            <input class="mb-3" placeholder="Số lượng" type="number" [formControlName]="i"
-                                                style="height: 45px;">
-                                            <div class="error" role="alert" *ngIf="item!.invalid && isSubmit">
-                                                <p><i class="fal fa-exclamation-triangle me-2"></i>
-                                                    Vui lòng nhập dung lượng của sản phẩm
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3" formArrayName="ram" >
-                                        <div *ngFor="let item of rom; let i = index" style="border-bottom: 1px solid silver; margin-bottom: 10px;">
-                                            <p style="margin: 5px 0;">Ram:</p>
-                                            <input class="mb-3" placeholder="Số lượng" type="number" [formControlName]="i"
-                                                style="height: 45px;">
-                                            <div class="error" role="alert" *ngIf="item!.invalid && isSubmit">
-                                                <p><i class="fal fa-exclamation-triangle me-2"></i>
-                                                    Vui lòng nhập Ram của sản phẩm
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3" formArrayName="price">
-                                        <div *ngFor="let item of price; let i = index"  style="border-bottom: 1px solid silver; margin-bottom: 10px;">
-                                            <p style="margin: 5px 0;">Giá:</p>
-                                            <input class="mb-3" placeholder="Giá bán" type="number" [formControlName]="i"
-                                                style="height: 45px;">
-                                            <div class="error" role="alert" *ngIf="item!.invalid && isSubmit">
-                                                <p><i class="fal fa-exclamation-triangle me-2"></i>
-                                                    Giá bán phải lớn hơn 0
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3" formArrayName="totalQuantity">
-                                        <div *ngFor="let item of totalQuantity; let i = index"  style="border-bottom: 1px solid silver; margin-bottom: 10px; position: relative;">
-                                            <p style="margin: 5px 0;">Số lượng:</p>
-                                            <input class="mb-3" placeholder="Số lượng" type="number" [formControlName]="i"
-                                                style="height: 45px;">
-                                            <div class="error" role="alert" *ngIf="item!.invalid && isSubmit">
-                                                <p><i class="fal fa-exclamation-triangle me-2"></i>
-                                                    Số lượng phải lớn hơn 0
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
                             <div class="col-12">
                                 <label for="file">
                                     <p class="btn-upload"><i class="fal fa-cloud-upload me-2"></i>Thêm ảnh</p>
@@ -177,9 +125,9 @@
                             </div>
                             <div class="col-12">
                                 <div class="d-flex w-100 flex-wrap justify-content-center">
-                                    <div class="box" *ngFor="let image of imageList">
+                                    <div class="box" *ngFor="let image of imageList; let i = index">
                                         <img class="image-upload" src={{image}} alt="">
-                                        <div class="mask flex-mid">
+                                        <div  (click)="onDeleteImage(i)" class="mask flex-mid">
                                             <p>Xóa</p>
                                         </div>
                                     </div>

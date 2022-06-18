@@ -21,4 +21,7 @@ export class ProductService {
     addProduct = (data : any) => {
         return this.http.post(`${API_URL}product/add-new`, data);
     }
+    editProduct = (data : any) => {
+        return this.http.put(`${API_URL}product/${data._id}`, data)
+    }
 }

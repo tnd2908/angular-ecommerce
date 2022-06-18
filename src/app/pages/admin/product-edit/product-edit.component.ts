@@ -104,10 +104,14 @@ export class ProductEditComponent implements OnInit {
       })
     }
   }
-  onDeleteImage = (image: any) => {
-    console.log(image);
+  onDeleteImage = (i: any) => {
+    console.log(i);
+    this.imageList = this.imageList.filter((item, index) => index !== i)
+    this.imageNameList = this.imageNameList.filter((item, index) => index !== i)
   }
   onSubmit = () => {
-    console.log(this.imageNameList);
+    this.service.editProduct({ ...this.form.value, images: this.imageNameList, _id: this.product._id}).subscribe((res : any) => {
+      console.log(res);
+    })
   }
 }
