@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from 'src/service/product.service';
+import { Router } from '@angular/router';
+import { API_URL } from 'src/app/utils/constant';
+import { CartService } from 'src/service/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -8,14 +10,25 @@ import { ProductService } from 'src/service/product.service';
 })
 export class CartComponent implements OnInit {
   cartList!: any[];
-  formatPrice = (price: number) => {
-    return new Intl.NumberFormat('#.###').format(price);
-  }
-  constructor(private service: ProductService) { }
+  public grandTotal !: number;
+  public cartItems: any = [];
+  url = API_URL;
+
+  constructor( private cartService: CartService, private route: Router) { }
 
   ngOnInit(): void {
-    this.service.getProductList().subscribe((res : any) => {
-      this.cartList = res.data
-    })
+    this.cartService.getProducts().subscribe(res => {
+      this.cartItems = res;
+      this.grandTotal = this.cartService.getTotalPrice();
+    }) 
+  }
+
+  removeItem(item: any) {
+    this.cartService.removeCartItem(item)
+  }
+
+  clearCart() {
+    this.cartService.removeAllCart();
+    this.route.navigate(["/"])
   }
 }

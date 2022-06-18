@@ -15,6 +15,7 @@ import { AddBrandComponent } from './pages/admin/add-brand/add-brand.component';
 import { EditCategoryComponent } from './pages/admin/edit-category/edit-category.component';
 import { EditBrandComponent } from './pages/admin/edit-brand/edit-brand.component';
 import { ProductEditComponent } from './pages/admin/product-edit/product-edit.component';
+import { UserComponent } from './pages/user/user.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'user', component: UserComponent},
   {
     path: 'admin',
     component: LayoutComponent,

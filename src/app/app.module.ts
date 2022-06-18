@@ -44,6 +44,9 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
+import { DashboardComponent } from './pages/user/dashboard/dashboard.component';
+import { UserComponent } from './pages/user/user.component';
+import { UserInfoComponent } from './pages/user/user-info/user-info.component';
 
 registerLocaleData(en);
 @NgModule({
@@ -67,6 +70,9 @@ registerLocaleData(en);
     AddBrandComponent,
     EditCategoryComponent,
     EditBrandComponent,
+    DashboardComponent,
+    UserComponent,
+    UserInfoComponent
   ],
   imports: [
     FormsModule,

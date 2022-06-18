@@ -1,50 +1,84 @@
-<div class="container-fluid bg-light pt-5 pb-5 cart">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <h4 style="background-color: white; padding: 10px 20px; font-weight: normal;">Giỏ hàng của bạn</h4>
-                <div class="cart-item shadow-sm d-flex justify-content-between"
-                    *ngFor="let product of cartList"
-                >
-                    <div class="d-flex">
-                        <div class="product-image">
-                            <img src={{product.imagePath}} alt="">
-                        </div>
-                        <div class="product-info">
-                            <h5> {{product.name}} </h5>
-                            <p>Giá: {{product.price}}đ </p>
-                            <div class="action d-flex align-items-center">
-                                <button>+</button>
-                                <p>1</p>
-                                <button>-</button>
+<ng-container *ngIf="cartItems.length != 0">
+    <div class="container-fluid bg-light pt-5 pb-5 cart">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h4 style="background-color: white; padding: 10px 20px; font-weight: normal;">Giỏ hàng của bạn</h4>
+                    <div class="cart-item shadow-sm d-flex justify-content-between"
+                        *ngFor="let product of cartItems"
+                    >
+                        <div class="d-flex">
+                            <div class="product-image">
+                                <img src="{{url+'upload/'+product.images}}" alt="">
+                            </div>
+                            <div class="product-info">
+                                <h5> {{product.name}} </h5>
+                                <p>Giá: {{product.price}}đ </p>
                             </div>
                         </div>
+                        <button (click)="removeItem(product)" class="btn-delete-item"><i class="fal fa-trash-alt"></i></button>
                     </div>
-                    <button class="btn-delete-item"><i class="fal fa-trash-alt"></i></button>
                 </div>
-            </div>
-            <div class="col-md-4 bg-white">
-                <div class="cart-payment">
-                    <div class="d-flex justify-content-between cart-payment__item--top">
-                        <h5>Tổng tiền: </h5>
-                        <h5>65.490.000đ</h5>
+                <div class="col-md-4 bg-white">
+                    <div class="cart-payment">
+                        <div class="d-flex justify-content-between">
+                            <h5>Tổng tiền: </h5>
+                            <h5> ${{grandTotal}}đ</h5>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p>Tạm tính: </p>
+                            <p>${{grandTotal}}đ</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p>Phí ship: </p>
+                            <p>Miễn phí</p>
+                        </div>
+                        <p class="mt-2">Nhập mã giảm giá:</p>
+                        <input type="text" placeholder="Nhập mã giảm giá">
+                        <button class="btn-apply">Áp dụng</button>
+                        <button class="btn-payment" (click)="clearCart()">Thanh toán</button>
+                        <h5 class="mt-4">Các loại hình thanh toán</h5>
+                        <img src="https://www.menusifu.com/wp-content/uploads/2018/04/paymentmethods.png" alt="" class="mt-2">
                     </div>
-                    <div class="d-flex justify-content-between cart-payment__item">
-                        <p>Tạm tính: </p>
-                        <p>65.490.000đ</p>
-                    </div>
-                    <div class="d-flex justify-content-between cart-payment__item">
-                        <p>Phí ship: </p>
-                        <p>Miễn phí</p>
-                    </div>
-                    <p class="mt-2">Nhập mã giảm giá:</p>
-                    <input type="text" placeholder="Nhập mã giảm giá">
-                    <button class="btn-apply">Áp dụng</button>
-                    <button class="btn-payment">Thanh toán</button>
-                    <h5 class="mt-4">Các loại hình thanh toán</h5>
-                    <img src="https://www.menusifu.com/wp-content/uploads/2018/04/paymentmethods.png" alt="" class="mt-2">
                 </div>
             </div>
         </div>
     </div>
-</div>
+</ng-container>
+
+
+<ng-container *ngIf="cartItems.length == 0">
+    <div class="container-fluid bg-light pt-5 pb-5 cart">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h4 style="background-color: white; padding: 10px 20px; font-weight: normal;">Giỏ hàng của bạn đang trống!</h4>
+                    <img style="width: 80%; padding: 40px 0; margin-left: 90px;" src="https://img.freepik.com/free-vector/no-data-concept-illustration_114360-2506.jpg?t=st=1653299689~exp=1653300289~hmac=7dd768eea21ebc9f68d2465d2bdaa77ff28724ae4b956fe8ee9afddb4355e094&w=1380" alt="empty cart">
+                    <button routerLink="/" class="btn-apply">Tiếp tục mua hàng</button>
+                </div>
+                <div class="col-md-4 bg-white">
+                    <div class="cart-payment">
+                        <div class="d-flex justify-content-between cart-payment__item--top">
+                            <h5>Tổng tiền: </h5>
+                            <h5> ${{grandTotal}}đ</h5>
+                        </div>
+                        <div class="d-flex justify-content-between cart-payment__item">
+                            <p>Tạm tính: </p>
+                            <p>${{grandTotal}}đ</p>
+                        </div>
+                        <div class="d-flex justify-content-between cart-payment__item">
+                            <p>Phí ship: </p>
+                            <p>Miễn phí</p>
+                        </div>
+                        <p class="mt-2">Nhập mã giảm giá:</p>
+                        <input type="text" placeholder="Nhập mã giảm giá">
+                        <button class="btn-apply">Áp dụng</button>
+                        <button class="btn-payment" (click)="clearCart()">Thanh toán</button>
+                        <h5 class="mt-4">Các loại hình thanh toán</h5>
+                        <img src="https://www.menusifu.com/wp-content/uploads/2018/04/paymentmethods.png" alt="" class="mt-2">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="shadow-sm px-4 py-4">
+                <form [formGroup]="form" style="height:406px;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Email</label>
+                                <p>{{user.email}}</p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Tên</label>
+                                <input formControlName="fullName" value={{user.fullName}} type="text" class="form-control" id="exampleInputFirstName" aria-describedby="emailHelp">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Số điện thoại</label>
+                                <input formControlName="phone" value={{user.phone}} type="text" class="form-control" id="exampleInputPhone">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Mật khẩu</label>
+                                <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+                            </div>
+                            <a routeLink="/login" class="mt-3 text-danger d-block mb-3">Nhập mật khẩu để cập nhật thông tin</a>
+                            <button type="submit" class="btn-register" (click)="submit()">Chỉnh sửa thông tin cá nhân</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

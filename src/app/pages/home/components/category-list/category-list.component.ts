@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { API_URL } from 'src/app/utils/constant';
 import { ICategory } from 'src/interface/category/category';
 import { CategoryService } from 'src/service/category.service';
 
@@ -8,13 +9,17 @@ import { CategoryService } from 'src/service/category.service';
   styleUrls: ['./category-list.component.scss']
 })
 export class CategoryListComponent implements OnInit {
-  categoryList!: ICategory[];
+  categoryList!: any[];
   constructor(private service: CategoryService) { }
-
+  url = API_URL
   ngOnInit(): void {
     this.service.getCategoryList().subscribe((res : any) => {
-      this.categoryList = res.categories
+      this.categoryList = res.categories.map((item : any) => {
+        return {
+          ...item,
+          imageUrl: `${API_URL}upload/${item.icon}`
+        }
+      })
     });
   }
-
 }

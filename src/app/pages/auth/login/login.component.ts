@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { AuthService } from 'src/service/auth.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,11 @@ import { AuthService } from 'src/service/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(
+    private token: AuthService,
+    private router: Router,
+    private http: HttpClient,
+    ) { }
   form!: FormGroup;
   isVisibleFail = false;
   isLoading = false;
@@ -27,17 +32,19 @@ export class LoginComponent implements OnInit {
       password: new FormControl(null, Validators.required),
     })
   }
-  onSubmit = () => {
-    this.authService.login(this.form.value).subscribe((res : any) => {
-      if (res.success === true) {
-        console.log(res);
-        AppComponent.user = { fullName: 'hello'}
-        console.log(AppComponent.user);
-        localStorage.setItem('accessToken', res.accessToken)
-        this.router.navigate(['/'])
-      } else {
-        this.isVisibleFail = true;
+  submit(): void {
+    this.token.login(this.form.getRawValue()).subscribe(
+      (res: any) => {
+        if (res.success == true) {
+          this.token.setToken(res.accessToken)
+          this.router.navigate(['/']);
+        } else if (res.success == false) {
+          console.log(res.message);
+          alert(res.message)
+        }
+      },err => {
+        console.log(err);
       }
-    })
+    )
   }
 }

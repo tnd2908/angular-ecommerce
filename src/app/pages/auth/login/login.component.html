@@ -7,7 +7,7 @@
             <div class="shadow-sm px-4 py-4">
                 <h4>Đăng nhập ngay</h4>
                 <p class="form__sub-title" style="color: silver;">Chào mừng bạn quay trở lại!</p>
-                <form [formGroup]="form" (submit)="onSubmit()">
+                <form [formGroup]="form" (submit)="submit()">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email</label>
                         <input formControlName="email" placeholder="Nhập địa chỉ email của bạn" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
