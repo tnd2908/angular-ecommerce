@@ -82,7 +82,7 @@ export class AddProductComponent implements OnInit {
   }
   getData = () => {
     this.categoryService.getCategoryList().subscribe((res : any) => {
-      this.categories = res.categories;
+      this.categories = res.categories.filter((item : any) => item.type === 'MAIN');
     })
     this.brandService.getBrandList().subscribe((res : any) => {
       this.brands = res.brands

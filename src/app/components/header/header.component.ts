@@ -9,10 +9,7 @@ import { AppComponent } from 'src/app/app.component';
 export class HeaderComponent implements OnInit {
   isAdminRoute: boolean = false;
   constructor() { }
-  user = AppComponent.user;
-  ngOnInit(): void {
-    console.log(this.user);
-    
+  ngOnInit(): void {    
     this.isAdminRoute = window.location.pathname.startsWith('/admin')
   }
 
