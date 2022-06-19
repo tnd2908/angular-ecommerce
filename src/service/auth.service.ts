@@ -10,7 +10,6 @@ import jwtDecode from 'jwt-decode';
 )
 export class AuthService {
     tokenUser: any 
-    // public User = jwtDecode(this.tokenUser)
     userObserver: any = new BehaviorSubject<any>({})
     user: any
     constructor(private http: HttpClient) {}
