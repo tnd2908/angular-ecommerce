@@ -32,11 +32,6 @@ export class ProductListComponent implements OnInit {
     this.service.getProductList().subscribe((res : any) => {
       this.productList = res.data;
       console.log(this.productList);
-      this.productList.map((item: any) => {
-        this.image = Math.floor(Math.random() * item.images.length);
-        console.log(this.image);
-        return item.images = item.images[this.image]
-      })
     })
   }
 

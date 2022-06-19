@@ -54,3 +54,8 @@ button.focus,button:active.focus,button.active.focus {
 .container-fluid {
     overflow-x: hidden;
 }
+.p-selectbutton .p-button.p-highlight {
+    background: red !important;
+    border-color: red !important;
+    outline: none !important;
+}

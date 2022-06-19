@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, OnChanges, SimpleChanges, Input, NgZone } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import jwtDecode from 'jwt-decode';
 import { AuthService } from 'src/service/auth.service';
 
@@ -13,9 +14,10 @@ export class HeaderComponent implements OnInit {
   userName!: string;
   isAdmin = false;
   tokenUser: any
-  constructor(private service:AuthService ) { }
+  constructor(private service:AuthService, private route: ActivatedRoute ) { }
   
   ngOnInit(): void {
+    this.isAdmin = window.location.pathname.startsWith('/admin')
     this.service.getToken().subscribe((res: any) => {
       this.user = res;
       const tempName = res.fullName.split(' ')
@@ -23,7 +25,6 @@ export class HeaderComponent implements OnInit {
       console.log(this.userName)
     })
     this.getToken()
-    this.isAdmin = window.location.pathname.startsWith('/admin')
   }
 
   getToken() {

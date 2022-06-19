@@ -1,26 +1,14 @@
-<div class="container-fluid bg-light">
-    <div class="container product-detail">
+<div class="container-fluid bg-light" style="overflow-x: hidden;">
+    <div class="container product-detail" style="overflow-x: hidden;">
         <div class="row">
             <div class="col-md-6">
                 <div class="product-detail--left">
-                    <img class="product-detail__thumb" src={{product.imagePath}} alt="">
+                    <img class="product-detail__thumb" src={{activeImage}} alt="">
                     <div class="product-detail__sub-image">
                         <div class="row mt-4">
-                            <div class="col-3 bg-light">
-                                <img src="https://image.cellphones.com.vn/358x/media/catalog/product/i/p/iphone-12_3__1.jpg"
+                            <div class="col-3 bg-light" *ngFor="let item of product.images">
+                                <img [className]="url+'upload/'+item === activeImage ? 'active' : ''" src="{{url+'upload/'+item}}"
                                     alt="" class="product-detail__sub-image active">
-                            </div>
-                            <div class="col-3 bg-light">
-                                <img src="https://image.cellphones.com.vn/358x/media/catalog/product/i/p/iphone-12_4__1.jpg"
-                                    alt="" class="product-detail__sub-image">
-                            </div>
-                            <div class="col-3 bg-light">
-                                <img src="https://image.cellphones.com.vn/358x/media/catalog/product/i/p/iphone-12_2__1.jpg"
-                                    alt="" class="product-detail__sub-image">
-                            </div>
-                            <div class="col-3 bg-light">
-                                <img src="https://image.cellphones.com.vn/358x/media/catalog/product/i/p/iphone-12_2__1.jpg"
-                                    alt="" class="product-detail__sub-image">
                             </div>
                         </div>
                     </div>
@@ -28,7 +16,7 @@
             </div>
             <div class="col-md-6 bg-white">
                 <div class="product-detail--right">
-                    <h2> {{product.name}} </h2>
+                    <h2 class="product-detail__name"> {{product.name}} </h2>
                     <div class="d-flex mt-2">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -37,21 +25,25 @@
                         <i class="fas fa-star in-active"></i>
                     </div>
                     <div class="product-detail__ram d-flex flex-column">
-                        <h5>Bộ nhớ trong: </h5>
-                        <div class="d-flex align-items-center mt-3">
-                            <input type="radio" class="btn-check" name="options-outlined" id="1" autocomplete="off"
-                                checked>
-                            <label class="btn btn-outline-danger" for="1">64GB</label>
-                            <input type="radio" class="btn-check" name="options-outlined" id="2" autocomplete="off">
-                            <label class="btn btn-outline-danger" for="2">128GB</label>
-                            <input type="radio" class="btn-check" name="options-outlined" id="3" autocomplete="off">
-                            <label class="btn btn-outline-danger" for="3">256GB</label>
+                        <h5>Dung luợng </h5>
+                        <div class="d-flex align-items-center mt-3 w-100" style="overflow: hidden;">
+                            <div [className]="item.rom === product.rom ? 'model active' : 'model'" class="model" *ngFor="let item of model">
+                                <p (click)="getData()" [routerLink]="'/product/'+item.link+'GB'"> {{item.rom}}GB </p>
+                            </div>
                         </div>
                     </div>
-                    <p class="product-detail__price">Giá: 36.900.000đ</p>
+                    <div class="product-detail__color">
+                        <h5>Màu sắc </h5>
+                        <div class="d-flex align-items-centerw-100" style="overflow: hidden;">
+                            <div class="color" *ngFor="let item of product.colors">
+                                <div [style]="{'background': item.value}" style="width: 25px; height: 25px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="product-detail__price">Giá: {{product.price | currency: 'VND'}}</p>
                     <div class="card rounded">
                         <div class="card-header">
-                            <h6><i class="fal fa-gift me-2"></i>Khuyến mãi</h6>
+                            <h6 style="font-size: 18px;"><i class="fal fa-gift me-2"></i>Khuyến mãi</h6>
                         </div>
                         <div class="card-body">
                             <p>Giảm thêm tới 1% cho thành viên của DK Store (áp dụng tùy sản phẩm)</p>
@@ -77,7 +69,7 @@
                         type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Đánh giá</button>
                 </div>
             </nav>
-            <div class="tab-content" id="nav-tabContent">
+            <div class="tab-content" id="nav-tabContent" style="padding-left: 20px; padding-right: 20px;">
                 <div class="tab-pane fade show active pb-3" id="nav-home" role="tabpanel"
                     aria-labelledby="nav-info-tab">
                     <p class="mt-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint ea perspiciatis

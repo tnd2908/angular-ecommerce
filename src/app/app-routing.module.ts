@@ -20,7 +20,7 @@ import { UserComponent } from './pages/user/user.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'product', component: DetailComponent },
-  { path: 'product/:id', component: DetailComponent },
+  { path: 'product/:name', component: DetailComponent },
   { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

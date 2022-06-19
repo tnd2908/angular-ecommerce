@@ -19,11 +19,14 @@ export class AddProductComponent implements OnInit {
   imageList: any[] = [];
   imageNameList: any[] = [];
   colors: any[] = [
-    { name: 'Black', value: '#000'},
-    { name: 'White', value: 'white'},
-    { name: 'Silver', value: 'silver'},
-    { name: 'Grey', value: 'grey'},
-    { name: 'Red', value: 'red'},
+    { name: 'Đen', value: '#000'},
+    { name: 'Trắng', value: 'white'},
+    { name: 'Bạc', value: 'silver'},
+    { name: 'Xám', value: 'grey'},
+    { name: 'Đỏ', value: 'red'},
+    { name: 'Xanh lá', value: 'green' },
+    { name: 'Tím', value: 'purple' },
+    { name: 'Xanh', value: 'aqua' }
   ]
   isVisibleFail = false;
   isVisibleSuccess = false;

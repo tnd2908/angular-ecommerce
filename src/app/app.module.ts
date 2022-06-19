@@ -18,6 +18,7 @@ import { ProductComponent } from './pages/admin/product/product.component';
 import { ProductEditComponent } from './pages/admin/product-edit/product-edit.component';
 import { CategoryComponent } from './pages/admin/category/category.component';
 import { AddProductComponent } from './pages/admin/add-product/add-product.component';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 // prime module
 import { TableModule } from 'primeng/table';
@@ -28,6 +29,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MultiSelectModule } from 'primeng/multiselect';
 import {DialogModule} from 'primeng/dialog';
+import {SelectButtonModule} from 'primeng/selectbutton';
 
 // Mui
 import { MatSelectModule } from '@angular/material/select';
@@ -49,6 +51,8 @@ import { UserComponent } from './pages/user/user.component';
 import { UserInfoComponent } from './pages/user/user-info/user-info.component';
 
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzNotificationModule } from 'ng-zorro-antd/notification';
+
 registerLocaleData(en);
 @NgModule({
   declarations: [
@@ -94,7 +98,10 @@ registerLocaleData(en);
     MatInputModule,
     MultiSelectModule,
     DialogModule,
-    NzModalModule
+    NzModalModule,
+    SelectButtonModule,
+    NzNotificationModule,
+    NgxPayPalModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],

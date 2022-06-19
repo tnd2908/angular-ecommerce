@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Params, Router } from '@angular/router';
+import { API_URL } from 'src/app/utils/constant';
 import { IProduct } from 'src/interface/product/product';
 import { CartService } from 'src/service/cart.service';
 import { ProductService } from 'src/service/product.service';
@@ -10,22 +11,34 @@ import { ProductService } from 'src/service/product.service';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
-  id!: String
+  name!: String
   relatedProductList!: any[]
+  activeImage!: String
+  model: any[] = []
+  url = API_URL
   constructor(private service : ProductService, private route: ActivatedRoute, private cartService: CartService) { }
-  @Input() product! : IProduct;
+  @Input() product! : any;
 
   ngOnInit(): void {
-    window.scrollTo(0, 0);
-    this.route.params.subscribe((param : Params) => {
-      this.id = param['id'];
-      this.service.getDetail(this.id).subscribe((res : any) => {
-        this.product = res.data
-      });
-    })
+    
     // this.service.getProductList().subscribe(() => {
     //   this.relatedProductList
     // })
+    this.getData()
+  }
+  getData = () => {
+    window.scrollTo(0, 0);
+    this.route.params.subscribe((param : Params) => {
+      this.name = param['name'];      
+      this.service.getDetail(this.name).subscribe((res : any) => {
+        console.log(res.data);
+        
+        this.product = res.data.detail
+        this.relatedProductList = res.data.relatedProductList
+        this.model = res.data.model
+        this.activeImage = `${API_URL}upload/${res.data.detail.images[0]}`
+      });
+    })
   }
   addToCart(product: any) {
     this.cartService.addtoCart(product)
