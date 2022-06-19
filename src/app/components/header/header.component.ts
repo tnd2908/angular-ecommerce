@@ -13,10 +13,10 @@ export class HeaderComponent implements OnInit {
   userName!: string;
   isAdmin = false;
   tokenUser: any
-  constructor(private token:AuthService ) { }
+  constructor(private service:AuthService ) { }
   
   ngOnInit(): void {
-    this.token.getToken().subscribe((res: any) => {
+    this.service.getToken().subscribe((res: any) => {
       this.user = res;
       const tempName = res.fullName.split(' ')
       this.userName = tempName[tempName.length-1]

@@ -14,6 +14,13 @@ export class AddCategoryComponent implements OnInit {
   isLoading = false;
   isVisibleSuccess = false;
   isVisibleFail = false
+  types = [{
+    value: 'MAIN',
+    name: 'Sản phẩm chính'
+  }, {
+    value: 'ACCESSORY',
+    name: 'Phụ kiện'
+  }]
   constructor(private service: UploadService, private cateService: CategoryService) {}
   ngOnInit(): void {
     this.initForm();
@@ -21,6 +28,7 @@ export class AddCategoryComponent implements OnInit {
   initForm() {
     this.form = new FormGroup({
       name: new FormControl('', Validators.required),
+      type: new FormControl('MAIN', Validators.required)
     });
   }
   onFileSelected = (event: any) => {

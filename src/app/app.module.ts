@@ -48,6 +48,7 @@ import { DashboardComponent } from './pages/user/dashboard/dashboard.component';
 import { UserComponent } from './pages/user/user.component';
 import { UserInfoComponent } from './pages/user/user-info/user-info.component';
 
+import { NzModalModule } from 'ng-zorro-antd/modal';
 registerLocaleData(en);
 @NgModule({
   declarations: [
@@ -93,6 +94,7 @@ registerLocaleData(en);
     MatInputModule,
     MultiSelectModule,
     DialogModule,
+    NzModalModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],
