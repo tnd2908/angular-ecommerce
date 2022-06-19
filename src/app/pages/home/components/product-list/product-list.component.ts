@@ -31,10 +31,7 @@ export class ProductListComponent implements OnInit {
   getData = () => {
     this.service.getProductList().subscribe((res : any) => {
       this.productList = res.data;
-      this.productList.map((item: any) => {
-        this.image = Math.floor(Math.random() * item.images.length);
-        return item.images = item.images[this.image]
-      })
+      console.log(this.productList);
     })
   }
 
