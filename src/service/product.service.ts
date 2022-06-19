@@ -24,4 +24,7 @@ export class ProductService {
     editProduct = (data : any) => {
         return this.http.put(`${API_URL}product/${data._id}`, data)
     }
+    deleteProduct = (id: any) => {
+        return this.http.delete(`${API_URL}product/${id}`)
+    }
 }

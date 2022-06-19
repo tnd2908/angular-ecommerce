@@ -44,7 +44,7 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-
+import { NzModalModule } from 'ng-zorro-antd/modal';
 registerLocaleData(en);
 @NgModule({
   declarations: [
@@ -87,6 +87,7 @@ registerLocaleData(en);
     MatInputModule,
     MultiSelectModule,
     DialogModule,
+    NzModalModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],
