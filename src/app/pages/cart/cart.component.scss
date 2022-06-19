@@ -5,6 +5,12 @@
         img {
             width: 100%;
         }
+        p {
+            font-size: 16px;
+        }
+        h5 {
+            font-size: 17px;
+        }
         &__item {
             h5 {
                 margin-bottom: 0;
@@ -28,6 +34,7 @@
         width: 100%;
         border: 0;
         margin-top: 10px;
+        font-size: 17px;
     }
     .btn-payment {
         background-color: #faad14;
@@ -39,12 +46,13 @@
         margin-top: 10px;
     }
     .btn-delete-item {
-        width: 50px;
         height: 50px;
-        border-radius: 50px;
+        border-radius: 4px;
         border: 0;
         transform: translateX(100px);
         transition: 0.5s;
+        padding: 10px 20px;
+        font-size: 16px;
         background-color: red;
         color: white;
     }
@@ -72,14 +80,22 @@
         }
         .product-info {
             margin-left: 20px;
+            h5 {
+                font-size: 16px;
+            }
             p {
                 font-size: 20px;
             }
             .action {
+                margin-top: 25px;
                 button {
                     border: 0;
-                    width: 35px;
-                    height: 35px;
+                    width: 30px;
+                    height: 30px;
+                    background-color: tan;
+                    font-size: 17px;
+                    border-radius: 50%;
+                    color: white;
                 }
                 p {
                     margin-bottom: 0;
@@ -88,5 +104,8 @@
                 }
             }
         }
+    }
+    .total-price {
+        font-size: 20px;
     }
 }

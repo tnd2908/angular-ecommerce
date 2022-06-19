@@ -1,42 +1,67 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  public cartItemList : any =[]
-  public productList = new BehaviorSubject<any>([]);
-  public search = new BehaviorSubject<string>("");
+  data = JSON.parse(localStorage.getItem('cart')!)
+  public cart : any = this.data ? this.data : [];
 
-  constructor() { }
+  constructor(private notification: NzNotificationService) { }
   getProducts(){
-    return this.productList.asObservable();
+    return this.cart
   }
 
   addtoCart(product : any){
-    this.cartItemList.push(product);
-    this.productList.next(this.cartItemList);
-    console.log(this.productList)
+    this.notification.success('Thành công', 'Đã thêm sản phẩm vào giỏ hàng')
+    if(this.cart.length) {
+      this.cart.forEach((item : any) => {
+        if (item._id === product._id) {
+          item.quantity = item.quantity +1
+        } else {
+          this.cart.push({...product, quantity: 1});
+        }
+      })
+    } else {
+      this.cart.push({...product, quantity: 1});
+    }
+    
+    console.log(this.cart);
+    
+    localStorage.setItem('cart',JSON.stringify(this.cart))
+ }
+ increase = (product:any) => {
+  this.cart.forEach((item : any) => {
+    if (item._id === product._id) {
+      item.quantity = item.quantity +1
+    }
+  })
+  localStorage.setItem('cart', JSON.stringify(this.cart))
+ }
+ decrease = (product : any) => {
+  this.cart.forEach((item : any) => {
+    if (item._id === product._id) {
+      item.quantity = item.quantity - 1
+    }
+  })
+  localStorage.setItem('cart', JSON.stringify(this.cart))
  }
   getTotalPrice() : number{
-    let grandTotal = 0;
-    this.cartItemList.map((a:any)=>{
-      grandTotal += a.price;
+    let total = 0
+    this.cart.forEach((item : any) => {
+      total += item.price * item.quantity
     })
-    return grandTotal;
+    return total;
   }
   removeCartItem(product: any){
-    this.cartItemList.map((a:any, index:any)=>{
-      if(product.id=== a.id){
-        this.cartItemList.splice(index,1);
-      }
-    })
-    this.productList.next(this.cartItemList);
+    this.cart = this.cart.filter((item : any) => item._id !== product._id)
+    localStorage.setItem('cart', JSON.stringify(this.cart))
   }
-  removeAllCart(){
-    this.cartItemList = []
-    this.productList.next(this.cartItemList);
+  clearCart(){
+    this.cart = []
+    localStorage.setItem('cart', JSON.stringify(this.cart))
   }
 }

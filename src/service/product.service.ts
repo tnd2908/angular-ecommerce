@@ -15,8 +15,8 @@ export class ProductService {
         // });
         return this.http.get(`${API_URL}product`);
     }
-    getDetail = (id: String) => {
-        return this.http.get(`${API_URL}product/${id}`)
+    getDetail = (name: String) => {
+        return this.http.get(`${API_URL}product/detail/${name}`)
     }
     addProduct = (data : any) => {
         return this.http.post(`${API_URL}product/add-new`, data);
