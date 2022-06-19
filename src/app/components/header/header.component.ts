@@ -13,19 +13,11 @@ export class HeaderComponent implements OnInit {
   userName!: string;
   isAdmin = false;
   tokenUser: any
-<<<<<<< HEAD
-  constructor(private authService:AuthService ) { }
-  
-  ngOnInit(): void {
-    this.isAdmin = window.location.pathname.startsWith('/admin')
-
-    this.authService.getToken().subscribe((res: any) => {
-=======
   constructor(private service:AuthService ) { }
   
   ngOnInit(): void {
+    this.isAdmin = window.location.pathname.startsWith('/admin')
     this.service.getToken().subscribe((res: any) => {
->>>>>>> a74fe846cfa4766a46ba14d3d09703d0b006d3bc
       this.user = res;
       const tempName = res.fullName.split(' ')
       this.userName = tempName[tempName.length-1]
