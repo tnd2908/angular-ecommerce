@@ -14,10 +14,10 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="d-flex justify-content-around">
+                    <div style="margin-top:7px" class="d-flex justify-content-around">
                         <div class="contact d-flex flex-column">
                             <p class="text-white">Hotline hỗ trợ</p>
-                            <h6 class="text-white"> <i class="fas fa-phone me-1"></i> 090.995.6627</h6>
+                            <h4 class="text-white"> <i class="fas fa-phone me-1"></i> 090.995.6627</h4>
                         </div>
                             <ng-container *ngIf="user.userId == null">
                                 <div class="navbar-auth-link">
@@ -25,11 +25,11 @@
                                         <a routerLink="/login">Đăng nhập /</a>
                                         <a style="padding-left: 5px;" routerLink="/register">Đăng ký</a>
                                     </div>
-                                    <div style="cursor: pointer;" ><h6 class="text-white"><i class="fas fa-user me-1" ></i> Thành viên</h6></div>
+                                    <div style="cursor: pointer;" ><h4 class="text-white"><i class="fas fa-user me-1" ></i> Thành viên</h4  ></div>
                                 </div>  
                             </ng-container>
                             <ng-container  *ngIf="user.userId != null">
-                                <div class="dropdown" style="cursor: pointer; margin-top: 15px;"><h6 class="text-white"><i class="fas fa-user me-1"></i> Hi {{userName}}</h6>
+                                <div class="dropdown" style="cursor: pointer; margin-top: 15px;"><h3 class="text-white"><i class="fas fa-user me-1"></i> Hi {{userName}}</h3>
                                     <div class="dropdown-content">
                                         <div class="contents"  routerLink="/user">Thông tin cá nhân</div>
                                         <div class="contents" >Lịch sử mua hàng</div>

@@ -9,7 +9,6 @@ import { CartService } from 'src/service/cart.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  cartList!: any[];
   public grandTotal !: number;
   public cartItems: any = [];
   url = API_URL;

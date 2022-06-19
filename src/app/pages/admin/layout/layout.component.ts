@@ -12,4 +12,7 @@ export class LayoutComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  logout() {
+    window.localStorage.removeItem("accessToken")
+  }
 }

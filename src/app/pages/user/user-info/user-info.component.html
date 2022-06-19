@@ -17,12 +17,14 @@
                                 <label for="exampleInputPassword1" class="form-label">Số điện thoại</label>
                                 <input formControlName="phone" value={{user.phone}} type="text" class="form-control" id="exampleInputPhone">
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Mật khẩu</label>
                                 <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="user-ava">
+                                <img src="https://img.freepik.com/free-vector/illustration-user-avatar-icon_53876-5907.jpg?t=st=1655618213~exp=1655618813~hmac=bc3db04c80c655d3e675b5c1e0c9ae47340648ab9b5c5fdfff6b53db3a9de97b&w=740" alt="">
                             </div>
                             <a routeLink="/login" class="mt-3 text-danger d-block mb-3">Nhập mật khẩu để cập nhật thông tin</a>
                             <button type="submit" class="btn-register" (click)="submit()">Chỉnh sửa thông tin cá nhân</button>

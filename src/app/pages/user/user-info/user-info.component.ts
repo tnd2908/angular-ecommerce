@@ -45,6 +45,7 @@ export class UserInfoComponent implements OnInit {
         alert('Cập nhật thông tin thành công')
         localStorage.removeItem("accessToken");
         this.refreshToken();
+        window.location.reload();
       } else {
         console.log('else',res);
         alert(res.message)

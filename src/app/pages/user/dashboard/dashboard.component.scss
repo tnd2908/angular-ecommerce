@@ -1,4 +1,5 @@
 .userName {
+    margin-top: 20px;
     font-weight: bold;
     padding: 30px 65px;
 }
@@ -24,6 +25,7 @@
 }
 
 .history:hover {
+    width: 100%;
     background-color: rgb(179, 179, 179);
 }
 

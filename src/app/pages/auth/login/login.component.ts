@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { AuthService } from 'src/service/auth.service';
 import { HttpClient } from '@angular/common/http';
+import jwtDecode from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -11,9 +12,11 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  tokenUser: any
+  user: any
 
   constructor(
-    private token: AuthService,
+    private authService: AuthService,
     private router: Router,
     private http: HttpClient,
     ) { }
@@ -32,12 +35,28 @@ export class LoginComponent implements OnInit {
       password: new FormControl(null, Validators.required),
     })
   }
+
+  getToken() {
+    this.tokenUser = localStorage.getItem("accessToken")
+    this.user = jwtDecode(this.tokenUser)
+  }
   submit(): void {
-    this.token.login(this.form.getRawValue()).subscribe(
+    this.authService.login(this.form.getRawValue()).subscribe(
       (res: any) => {
         if (res.success == true) {
-          this.token.setToken(res.accessToken)
-          this.router.navigate(['/']);
+          this.authService.setToken(res.accessToken)
+          this.authService.getToken().subscribe((res: any) => {
+            this.user = res;
+          })
+          this.getToken();
+          switch(this.user.role) {
+            case "ADMIN":
+              this.router.navigate(['/admin'])
+              break;
+            case "USER":
+              this.router.navigate(['/'])
+              break;
+          }
         } else if (res.success == false) {
           console.log(res.message);
           alert(res.message)
