@@ -8,4 +8,7 @@ export class BillService {
   addBill = (bill : any) => {
     return this.http.post(`${API_URL}bill/add`, bill)
   };
+  getBill = () => {
+    return this.http.get(`${API_URL}bill`)
+  }
 }

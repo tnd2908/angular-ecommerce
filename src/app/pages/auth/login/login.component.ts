@@ -5,6 +5,7 @@ import { AppComponent } from 'src/app/app.component';
 import { AuthService } from 'src/service/auth.service';
 import { HttpClient } from '@angular/common/http';
 import jwtDecode from 'jwt-decode';
+import { NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-login',
@@ -19,14 +20,15 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private http: HttpClient,
+    private modal: NzModalService
     ) { }
   form!: FormGroup;
   isVisibleFail = false;
   isLoading = false;
   ngOnInit(): void {
-    // if (localStorage.getItem('accessToken')) {
-    //   this.router.navigate(['/'])
-    // }
+    if (localStorage.getItem('accessToken')) {
+      this.router.navigate(['/'])
+    }
     this.initForm()
   }
   initForm = () => {
@@ -43,7 +45,7 @@ export class LoginComponent implements OnInit {
   submit(): void {
     this.authService.login(this.form.getRawValue()).subscribe(
       (res: any) => {
-        if (res.success == true) {
+        if (res.success === true) {
           this.authService.setToken(res.accessToken)
           this.authService.getToken().subscribe((res: any) => {
             this.user = res;
@@ -57,9 +59,12 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['/'])
               break;
           }
-        } else if (res.success == false) {
-          console.log(res.message);
-          alert(res.message)
+        } else {
+          console.log(res);
+          this.modal.error({
+            nzTitle: 'Đăng nhập thất bại',
+            nzContent: 'Sai thông tin tài khoản, vui lòng kiểm tra lại email hoặc password'
+          })
         }
       },err => {
         console.log(err);

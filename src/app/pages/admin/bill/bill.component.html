@@ -1,0 +1,35 @@
+<p-table [paginator]="true" [rows]="10" [showCurrentPageReport]="true" [value]="bill" responsiveLayout="scroll">
+    <ng-template pTemplate="caption">
+        <div class="flex align-items-center justify-content-between">
+            Đơn hàng
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Tên KH</th>
+            <th>Tổng tiền</th>
+            <th>Trạng thái</th>
+            <th>Ngày đặt</th>
+            <th>Xem</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-bill>
+        <tr>
+            <td>{{bill.name}}</td>
+            <td>{{bill.total | currency:'VND'}}</td>
+            <td>
+                <nz-tag [nzColor]="bill.color">{{bill.status}}</nz-tag>
+            </td>
+            <td>
+                {{bill.createAt | date: 'longDate'}}
+            </td>
+            <td style="width: 70px">
+                <div style="width: 70px" class="d-flex">
+                    <button class="btn-view">
+                        <i class="fal fa-eye"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

@@ -26,10 +26,11 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCart();
-    this.initConfig()
+    this.initConfig();
   }
+
   showSuccess = () => {
-    this.notification.success('Giao dịch thành công', 'Đơn hàng của bạn đã được thanh toán, cửa hàng sẽ giao hàng cho bạn trong thời gian sớm nhất')
+    this.notification.success('Giao dịch thành công', 'Đơn hàng của bạn đã được thanh toán, cửa hàng sẽ giao hàng cho bạn trong thời gian sớm nhất', { nzPlacement: 'bottomLeft'})
   }
   private initConfig(): void {
     this.payPalConfig = {
@@ -60,7 +61,9 @@ export class CartComponent implements OnInit {
         onApprove: (data, actions) => {
             actions.order.get().then((details : any) => {
                 console.log('onApprove - you can get full order details inside onApprove: ', details);
-                const { amount, payee, shipping } = details.purchase_units[0]
+                const { payee, shipping } = details.purchase_units[0]
+                console.log(this.cartService.getTotalPrice());
+                
                 this.billService.addBill({
                   name: shipping.name.full_name,
                   email: payee.email_address,
@@ -68,7 +71,7 @@ export class CartComponent implements OnInit {
                   phone: 0,
                   status: 'Completed',
                   delivery: 0,
-                  total: this.total,
+                  total: this.cartService.getTotalPrice(),
                   details: this.cartItems.map((item : any) => {
                     return { 
                       productId: item._id,
@@ -78,8 +81,8 @@ export class CartComponent implements OnInit {
                     }
                   })
                 }).subscribe((res : any) => {
-                  console.log(res);
-                  this.showSuccess()
+                  this.showSuccess();
+                  this.clearCart();
                 })
             });
 
@@ -91,9 +94,6 @@ export class CartComponent implements OnInit {
         onError: err => {
             console.log('OnError', err);
         },
-        onClick: (data, actions) => {
-            console.log('onClick', data, actions);
-        }
     };
   }
   getCart = () => {
@@ -107,6 +107,7 @@ export class CartComponent implements OnInit {
 
   clearCart() {
     this.cartService.clearCart();
+    this.getCart();
   }
   increase = (product : any) => {
     this.cartService.increase(product);

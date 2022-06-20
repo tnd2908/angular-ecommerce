@@ -18,23 +18,34 @@ import { ProductEditComponent } from './pages/admin/product-edit/product-edit.co
 import { UserComponent } from './pages/user/user.component';
 import { hasRoleGuard } from './guard';
 import { hasAuthGuard } from './authenticate';
+import { LayoutMainComponent } from './components/layout-main/layout-main.component';
+import { BillComponent } from './pages/admin/bill/bill.component';
+import { BillLayoutComponent } from './pages/admin/bill/bill-layout/bill-layout.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'product', component: DetailComponent },
-  { path: 'product/:name', component: DetailComponent },
-  { path: 'cart', component: CartComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'user',
-      component: UserComponent,
-      canActivate: [hasAuthGuard]
-    },
+  {
+    path: '', component: LayoutMainComponent, children: [
+      { path: '', component: HomeComponent },
+      { path: 'product', component: DetailComponent },
+      { path: 'product/:name', component: DetailComponent },
+      { path: 'cart', component: CartComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
+      {
+        path: 'user',
+        component: UserComponent,
+        canActivate: [hasAuthGuard]
+      },
+    ]
+  },
   {
     path: 'admin',
     component: LayoutComponent,
-    canActivate: [hasAuthGuard,hasRoleGuard],
+    canActivate: [hasAuthGuard, hasRoleGuard],
     children: [
+      { path: '', component: BillLayoutComponent, children: [
+        { path: '', component: BillComponent}
+      ] },
       { path: 'product', component: ProductComponent },
       { path: 'product/add', component: AddProductComponent },
       { path: 'product/edit/:id', component: ProductEditComponent },
@@ -44,6 +55,7 @@ const routes: Routes = [
       { path: 'brand', component: BrandComponent },
       { path: 'brand/add', component: AddBrandComponent },
       { path: 'brand/edit/:id', component: EditBrandComponent },
+      { path: 'bill', component: BillComponent }
     ],
   },
 ];
@@ -52,4 +64,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

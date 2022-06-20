@@ -12,7 +12,7 @@ import { AuthService } from 'src/service/auth.service';
 export class HeaderComponent implements OnInit {
   user: any
   userName!: string;
-  isAdmin = false;
+  isAdmin = window.location.pathname.startsWith('/admin');
   tokenUser: any
   constructor(private service:AuthService, private route: ActivatedRoute ) { }
   
