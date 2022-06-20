@@ -106,6 +106,7 @@ export class AddProductComponent implements OnInit {
     if (this.form.valid) {
       this.isLoading = true;
       this.service.addProduct(data).subscribe((res : any) => {
+        console.log(res);
         this.isLoading = false;
         if (res.success === true) {
           this.isVisibleSuccess = true;

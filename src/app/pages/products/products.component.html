@@ -1,0 +1,37 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-12 mt-5">
+            <div class="filtter-prod d-flex">
+                <div style="cursor: pointer" class="fillter-btn" (click)="click()" class="list-title"><h5>Tất cả</h5></div>
+                <div *ngFor="let cate of cateList">
+                    <div style="margin-left: 20px;" (click)="getProdByCate(cate.id)" class="fillter-btn" class="list-title"><h5 style="cursor: pointer">{{cate.name}}</h5></div>
+                </div>
+            </div>
+        </div>
+        <div class="products">
+            <div class="row">
+                <div class="col-lg-24 col-md-3 col-sm-4 col-6" *ngFor="let product of productFilter; let i = index" style="padding: 10px;">
+                    <div class="product-item" >
+                        <img style="cursor: pointer;" [routerLink]="'/product/'+product.id.toString()" src={{product.imagePath}} alt="">
+                        <div class="product-item__body">
+                            <p class="product-item__title" [routerLink]="'/product/'+product.id.toString()" style="cursor: pointer;"> {{product.name}} </p>
+                            <div class="d-flex">
+                                <p class="product-item__price"> {{product.price}}đ </p>
+                                <p style="padding-left: 60px; font-weight:bolder; font-size:large; color: rgb(111, 108, 108);">{{product.quantity}}</p>
+                            </div>
+                            <div class="d-flex">
+                                <div class="d-flex mt-2 product-item__vote">
+                                    <i class="fas fa-star" *ngFor="let product of getActiveStar(product.star); let i = index"></i>
+                                    <i class="far fa-star" *ngFor="let product of getInActiveStar(product.star); let i = index"></i>
+                                </div>
+                                <div class="addCart">
+                                    <i style="color: red; padding-left: 60px; font-size:x-large; cursor: pointer;"  (click)="addToCart(product)" class="fas fa-shopping-cart"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
