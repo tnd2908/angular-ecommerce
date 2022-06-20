@@ -48,7 +48,7 @@ export class ProductEditComponent implements OnInit {
     this.initForm();
     this.route.params.subscribe((param : Params) => {
       this.id = param['id'];
-      this.service.getDetail(this.id as String).subscribe((res : any) => {
+      this.service.getDetailById(this.id as String).subscribe((res : any) => {
         this.product = res.data;
         const { name, price, description, category, brand, colors, ram, rom, totalQuantity } = res.data
         console.log(res.data);

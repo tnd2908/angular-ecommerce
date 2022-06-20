@@ -17,20 +17,20 @@ export class CartService {
 
   addtoCart(product : any){
     this.notification.success('Thành công', 'Đã thêm sản phẩm vào giỏ hàng')
+    const condition = this.cart.some((item: any)=> item._id === product._id)
     if(this.cart.length) {
-      this.cart.forEach((item : any) => {
-        if (item._id === product._id) {
-          item.quantity = item.quantity +1
-        } else {
-          this.cart.push({...product, quantity: 1});
-        }
-      })
+      if(condition) {
+        this.cart.forEach((item : any) => {
+          if (item._id === product._id) {
+            item.quantity = item.quantity +1
+          } 
+        })
+      } else {
+        this.cart.push({...product, quantity: 1});
+      }
     } else {
       this.cart.push({...product, quantity: 1});
     }
-    
-    console.log(this.cart);
-    
     localStorage.setItem('cart',JSON.stringify(this.cart))
  }
  increase = (product:any) => {

@@ -30,7 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MultiSelectModule } from 'primeng/multiselect';
 import {DialogModule} from 'primeng/dialog';
 import {SelectButtonModule} from 'primeng/selectbutton';
-
+import {PaginatorModule} from 'primeng/paginator';
 // Mui
 import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
@@ -52,6 +52,10 @@ import { UserInfoComponent } from './pages/user/user-info/user-info.component';
 
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
+import { NzTagModule } from 'ng-zorro-antd/tag';
+import { LayoutMainComponent } from './components/layout-main/layout-main.component';
+import { BillComponent } from './pages/admin/bill/bill.component';
+import { BillLayoutComponent } from './pages/admin/bill/bill-layout/bill-layout.component';
 
 registerLocaleData(en);
 @NgModule({
@@ -77,7 +81,10 @@ registerLocaleData(en);
     EditBrandComponent,
     DashboardComponent,
     UserComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    LayoutMainComponent,
+    BillComponent,
+    BillLayoutComponent
   ],
   imports: [
     FormsModule,
@@ -102,6 +109,8 @@ registerLocaleData(en);
     SelectButtonModule,
     NzNotificationModule,
     NgxPayPalModule,
+    NzTagModule,
+    PaginatorModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],

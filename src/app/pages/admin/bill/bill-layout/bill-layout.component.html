@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="box box--1">
+                <h6>Tổng doanh thu</h6>
+                <div class="d-flex justify-content-between">
+                    <p>0</p>
+                    <p><i class="fas fa-sack-dollar"></i></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="box box--2">
+                <h6>Ngày</h6>
+                <div class="d-flex justify-content-between">
+                    <p> {{date | date: 'longDate'}} </p>
+                    <p><i class="fas fa-calendar-alt"></i></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="box box--3">
+                <h6>Tổng người dùng</h6>
+                <div class="d-flex justify-content-between">
+                    <p>0</p>
+                    <p><i class="fas fa-users"></i></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="box box--4">
+                <h6>Thông báo</h6>
+                <div class="d-flex justify-content-between">
+                    <p>0</p>
+                    <p><i class="fas fa-comment"></i></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-9 mt-3">
+            <router-outlet></router-outlet>
+        </div>
+        <div class="col-md-3">
+            <div class="bg-white mt-3" style="padding: 20px;">
+                <h2 class="text-center">Top sản phẩm bán chạy nhất</h2>
+                <canvas id="chart"> {{chart}} </canvas>
+            </div>
+        </div>
+    </div>
+</div>

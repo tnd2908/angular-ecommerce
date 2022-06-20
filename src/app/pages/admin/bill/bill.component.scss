@@ -1,0 +1,45 @@
+.box {
+    padding: 20px;
+    border-radius: 8px;
+    height: 120px;
+    h6 {
+        font-size: 20px;
+        color: white;
+    }
+    p {
+        font-size: 18px;
+        color: white;
+        margin-top: 10px;
+        font-size: 25px;
+        margin-bottom: 0;
+        i {
+            color: white;
+            display: block;
+        }
+    }
+    &--1 {
+        background-color: #ad6800;
+    }
+    &--2 {
+        background-color: #d4b106;
+    }
+    &--3 {
+        background-color: #5b8c00;
+    }
+    &--4 {
+       background-color: #1890ff; 
+    }
+}
+.btn-view {
+    border: 1px solid red;
+    color: red;
+    background-color: white;
+    border-radius: 4px;
+    height: 40px;
+    width: 40px;
+}
+#chart {
+    width: 50%;
+    height: 50%;
+    display: block;
+}
