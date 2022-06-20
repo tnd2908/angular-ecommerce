@@ -10,7 +10,6 @@ import jwtDecode from 'jwt-decode';
 )
 export class AuthService {
     tokenUser: any 
-    // public User = jwtDecode(this.tokenUser)
     userObserver: any = new BehaviorSubject<any>({})
     user: any
     constructor(private http: HttpClient) {}
@@ -25,19 +24,10 @@ export class AuthService {
         this.tokenUser = localStorage.getItem("accessToken")
         this.user = jwtDecode(this.tokenUser)
         this.userObserver.next(this.user)
-        console.log(this.userObserver);
     }
 
     getToken(): any {
         return this.userObserver.asObservable();
     };
 
-    refreshToken(data: any) {
-        localStorage.removeItem("accessToken");
-        localStorage.setItem("accessToken", data);
-        this.tokenUser = localStorage.getItem("accessToken")
-        this.user = jwtDecode(this.tokenUser)
-        this.userObserver.next(this.user)
-        console.log(this.userObserver)
-    }
 }

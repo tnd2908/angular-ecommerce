@@ -45,6 +45,7 @@ export class UserInfoComponent implements OnInit {
         alert('Cập nhật thông tin thành công')
         localStorage.removeItem("accessToken");
         this.refreshToken();
+        window.location.reload();
       } else {
         console.log('else',res);
         alert(res.message)
@@ -55,7 +56,6 @@ export class UserInfoComponent implements OnInit {
   refreshToken(): void {
     this.http.get(`${API_URL}auth/refresh/${this.user.userId}`).subscribe(
       (res: any) => {
-        console.log(res.refreshToken);
         this.authService.setToken(res.refreshToken)
       }
     )

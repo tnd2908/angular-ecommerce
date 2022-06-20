@@ -16,6 +16,8 @@ import { EditCategoryComponent } from './pages/admin/edit-category/edit-category
 import { EditBrandComponent } from './pages/admin/edit-brand/edit-brand.component';
 import { ProductEditComponent } from './pages/admin/product-edit/product-edit.component';
 import { UserComponent } from './pages/user/user.component';
+import { hasRoleGuard } from './guard';
+import { hasAuthGuard } from './authenticate';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,10 +26,14 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'user', component: UserComponent},
+  { path: 'user',
+      component: UserComponent,
+      canActivate: [hasAuthGuard]
+    },
   {
     path: 'admin',
     component: LayoutComponent,
+    canActivate: [hasAuthGuard,hasRoleGuard],
     children: [
       { path: 'product', component: ProductComponent },
       { path: 'product/add', component: AddProductComponent },
