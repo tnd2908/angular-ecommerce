@@ -10,7 +10,7 @@ import jwtDecode from 'jwt-decode';
 export class DashboardComponent implements OnInit {
   user: any
   tokenUser: any
-
+  Name!: string;
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -23,5 +23,10 @@ export class DashboardComponent implements OnInit {
   getToken() {
     this.tokenUser = localStorage.getItem("accessToken")
     this.user = jwtDecode(this.tokenUser)
+    const tempName = this.user.fullName.split(' ')
+    var firstName = tempName[tempName.length-1] 
+    var lastName = tempName[0]
+    this.Name = firstName.slice(0,1) + lastName.slice(0,1);      
   }
+  
 }

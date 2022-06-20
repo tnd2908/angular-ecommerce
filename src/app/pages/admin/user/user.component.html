@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mt-3">
+            <p-table [value]="users" responsiveLayout="scroll">
+                <ng-template pTemplate="caption">
+                    <div class="flex align-items-center justify-content-between">
+                        Users
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>STT</th>
+                        <th>Họ và tên</th>
+                        <th>Email</th>
+                        <th>Số điện thoại</th>
+                        <th>Ngày đăng ký</th>
+                        <th></th>
+                        <th>Thao tác</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-user>
+                    <tr>
+                        <td>{{index}}</td>
+                        <td style="font-weight:600;">{{user.fullName}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.phone}}</td>
+                        <td>{{dateCreated}}</td>
+                        <td> {{user.saled}} </td>
+                        <td style="width: 100px">
+                            <div style="width: 75px" class="d-flex justify-content-around">
+                                <button  pButton pRipple type="button"
+                                    icon="pi pi-eye" class="p-button-sm p-button-info"></button>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="flex align-items-center justify-content-between">
+                        There are {{users ? users.length : 0 }} customers in total
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>

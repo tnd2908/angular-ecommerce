@@ -21,6 +21,7 @@ import { hasAuthGuard } from './authenticate';
 import { LayoutMainComponent } from './components/layout-main/layout-main.component';
 import { BillComponent } from './pages/admin/bill/bill.component';
 import { BillLayoutComponent } from './pages/admin/bill/bill-layout/bill-layout.component';
+import { AdminUserComponent } from './pages/admin/user/user.component';
 
 const routes: Routes = [
   {
@@ -55,7 +56,8 @@ const routes: Routes = [
       { path: 'brand', component: BrandComponent },
       { path: 'brand/add', component: AddBrandComponent },
       { path: 'brand/edit/:id', component: EditBrandComponent },
-      { path: 'bill', component: BillComponent }
+      { path: 'bill', component: BillComponent },
+      { path: 'user', component: AdminUserComponent}
     ],
   },
 ];

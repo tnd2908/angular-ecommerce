@@ -56,6 +56,7 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 import { LayoutMainComponent } from './components/layout-main/layout-main.component';
 import { BillComponent } from './pages/admin/bill/bill.component';
 import { BillLayoutComponent } from './pages/admin/bill/bill-layout/bill-layout.component';
+import { AdminUserComponent } from './pages/admin/user/user.component';
 
 registerLocaleData(en);
 @NgModule({
@@ -84,7 +85,8 @@ registerLocaleData(en);
     UserInfoComponent,
     LayoutMainComponent,
     BillComponent,
-    BillLayoutComponent
+    BillLayoutComponent,
+    AdminUserComponent
   ],
   imports: [
     FormsModule,

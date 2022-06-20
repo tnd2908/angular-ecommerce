@@ -33,4 +33,7 @@ export class ProductService {
     getProductBestSaling = () => {
         return this.http.get(`${API_URL}product/sale/best-saling`)
     }
+    getAllProduct = () => {
+        return this.http.get(`${API_URL}product/all`)
+    }
 }
