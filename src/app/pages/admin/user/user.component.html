@@ -9,6 +9,7 @@
                 </ng-template>
                 <ng-template pTemplate="header">
                     <tr>
+                        <th>#</th>
                         <th>Họ và tên</th>
                         <th>Email</th>
                         <th>Số điện thoại</th>
@@ -19,6 +20,7 @@
                 </ng-template>
                 <ng-template pTemplate="body" let-user>
                     <tr>
+                        <td>{{ users.indexOf(user) + 1 }}</td>
                         <td style="font-weight:600;">{{user.fullName}}</td>
                         <td>{{user.email}}</td>
                         <td>{{user.phone}}</td>
