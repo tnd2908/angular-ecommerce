@@ -31,13 +31,18 @@
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="pw" class="form-label">Mật khẩu</label>
-                                    <input formControlName="password" placeholder="Nhập mật khẩu của bạn"
-                                        type="password" class="form-control" id="pw">
-                                    <div class="error" role="alert" *ngIf="password!.invalid && isSubmit">
-                                        <p><i class="fal fa-exclamation-triangle me-2"></i>Password phải có bao gồm chữ
-                                            và số, có it nhất 1 kí tự viết hoa và 1 kí tự đặc biệt và tối thiểu 6 kí tự
-                                        </p>
+                                    <div class="position-relative">
+                                        <label for="pw" class="form-label">Mật khẩu</label>
+                                        <input formControlName="password" placeholder="Nhập mật khẩu của bạn"
+                                            type="{{type}}" class="form-control" id="pw">
+                                        <div class="error" role="alert" *ngIf="password!.invalid && isSubmit">
+                                            <p><i class="fal fa-exclamation-triangle me-2"></i>Password phải có bao gồm chữ
+                                                và số, có it nhất 1 kí tự viết hoa và 1 kí tự đặc biệt và tối thiểu 6 kí tự
+                                            </p>
+                                        </div>
+                                        <div class="position-absolute eye">
+                                            <i (click)="toggle()" [className]="type === 'password' ? 'fal fa-eye' : 'fal fa-eye-slash' "></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

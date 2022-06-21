@@ -19,7 +19,7 @@ import { ProductEditComponent } from './pages/admin/product-edit/product-edit.co
 import { CategoryComponent } from './pages/admin/category/category.component';
 import { AddProductComponent } from './pages/admin/add-product/add-product.component';
 import { NgxPayPalModule } from 'ngx-paypal';
-
+import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 // prime module
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
@@ -31,6 +31,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import {DialogModule} from 'primeng/dialog';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {PaginatorModule} from 'primeng/paginator';
+import {DataViewModule} from 'primeng/dataview';
+
 // Mui
 import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
@@ -49,6 +51,7 @@ import en from '@angular/common/locales/en';
 import { DashboardComponent } from './pages/user/dashboard/dashboard.component';
 import { UserComponent } from './pages/user/user.component';
 import { UserInfoComponent } from './pages/user/user-info/user-info.component';
+import {PasswordModule} from 'primeng/password';
 
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
@@ -58,6 +61,8 @@ import { BillComponent } from './pages/admin/bill/bill.component';
 import { BillLayoutComponent } from './pages/admin/bill/bill-layout/bill-layout.component';
 import { AdminUserComponent } from './pages/admin/user/user.component';
 
+import { ProductsComponent } from './pages/products/products.component';
+import { HistoryComponent } from './pages/history/history.component';
 registerLocaleData(en);
 @NgModule({
   declarations: [
@@ -86,7 +91,9 @@ registerLocaleData(en);
     LayoutMainComponent,
     BillComponent,
     BillLayoutComponent,
-    AdminUserComponent
+    AdminUserComponent,
+    ProductsComponent,
+    HistoryComponent
   ],
   imports: [
     FormsModule,
@@ -113,6 +120,9 @@ registerLocaleData(en);
     NgxPayPalModule,
     NzTagModule,
     PaginatorModule,
+    DataViewModule,
+    NzCollapseModule,
+    PasswordModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],

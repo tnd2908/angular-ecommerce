@@ -30,7 +30,7 @@ export class ProductListComponent implements OnInit {
   }
   getData = () => {
     this.service.getProductList().subscribe((res : any) => {
-      this.productList = res.data;
+      this.productList = res.data.slice(0, 10);
       console.log(this.productList);
     })
   }

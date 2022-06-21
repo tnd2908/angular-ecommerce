@@ -9,6 +9,8 @@ import {
 import { BillService } from 'src/service/bill.service';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+import jwtDecode from 'jwt-decode';
+import { AuthService } from 'src/service/auth.service';
 
 @Component({
   selector: 'app-cart',
@@ -22,11 +24,21 @@ export class CartComponent implements OnInit {
   url = API_URL;
   public payPalConfig ? : IPayPalConfig;
   dolar = 23000;
-  constructor( private cartService: CartService, private route: Router, private billService: BillService, private notification: NzNotificationService) { }
+  user! : any
+  token : any
+  constructor( private cartService: CartService, private route: Router, private billService: BillService, private notification: NzNotificationService, private service: AuthService) { }
 
   ngOnInit(): void {
     this.getCart();
     this.initConfig();
+    if (localStorage.getItem('accessToken')) {
+      this.service.getToken().subscribe((res: any) => {
+        this.token = localStorage.getItem('accessToken')
+        this.user = jwtDecode(this.token)
+        console.log(this.user.userId);
+        
+      })
+    }
   }
 
   showSuccess = () => {
@@ -65,6 +77,7 @@ export class CartComponent implements OnInit {
                 console.log(this.cartService.getTotalPrice());
                 
                 this.billService.addBill({
+                  userId: this.user.userId ? this.user.userId : '',
                   name: shipping.name.full_name,
                   email: payee.email_address,
                   address: shipping.address.address_line_1 + ' ' + shipping.address.admin_area_2,

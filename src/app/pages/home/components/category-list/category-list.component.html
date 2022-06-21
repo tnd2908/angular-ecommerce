@@ -1,6 +1,6 @@
 <div class="category-list">
     <div class="category-item" *ngFor="let category of categoryList; let i = index">
-        <img src={{category.imageUrl}} alt="">
+        <img [routerLink]="['/product']" [queryParams]="{'category': category._id}" src={{category.imageUrl}} alt="">
         <p> {{category.name}} </p>
     </div>
 </div>

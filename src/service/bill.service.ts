@@ -11,4 +11,7 @@ export class BillService {
   getBill = () => {
     return this.http.get(`${API_URL}bill`)
   }
+  getHistory = (id: any) => {
+    return this.http.get(`${API_URL}auth/history/${id}`)
+  }
 }

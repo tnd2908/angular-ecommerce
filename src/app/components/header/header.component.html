@@ -32,7 +32,7 @@
                                 <div class="dropdown" style="cursor: pointer; margin-top: 15px;"><h3 class="text-white"><i class="fas fa-user me-1"></i> Hi {{userName}}</h3>
                                     <div class="dropdown-content">
                                         <div class="contents"  routerLink="/user">Thông tin cá nhân</div>
-                                        <div class="contents" >Lịch sử mua hàng</div>
+                                        <div class="contents" routerLink="/user/history" >Lịch sử mua hàng</div>
                                         <div class="contents" style="cursor: pointer;" (click)="logOut()">Đăng xuất</div>
                                     </div>
                                 </div>
@@ -46,7 +46,7 @@
         </div>
         <div class="col-12 d-flex navbar-link-container">
             <a routerLink="/">Trang chủ</a>
-            <a routerLink="/products">Sản phẩm</a>
+            <a routerLink="/product">Sản phẩm</a>
             <a >Giới thiệu</a>
             <a >Liên hệ</a>
             <a >Dịch vụ</a>

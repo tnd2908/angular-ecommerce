@@ -4,7 +4,7 @@ import { AuthService } from 'src/service/auth.service';
 import jwtDecode from 'jwt-decode';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { API_URL } from 'src/app/utils/constant';
-import { CartService } from 'src/service/cart.service';
+import { NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-user-info',
@@ -23,7 +23,7 @@ export class UserInfoComponent implements OnInit {
     private authService: AuthService, 
     private http: HttpClient,
     private formBuilder: FormBuilder,
-    private cartService: CartService
+    private modal: NzModalService
     ) { }
 
   ngOnInit(): void {
@@ -36,12 +36,8 @@ export class UserInfoComponent implements OnInit {
       phone: this.user.phone,
       password: ''
     })
-    this.getCart();
   }
-  getCart = () => {
-    this.cartItems = this.cartService.getProducts();
-    this.total = this.cartService.getTotalPrice();
-  }
+  
   getToken() {
     this.tokenUser = localStorage.getItem("accessToken")
     this.user = jwtDecode(this.tokenUser)
@@ -53,6 +49,10 @@ export class UserInfoComponent implements OnInit {
       console.log(res)
       if (res.success == true){
         alert('Cập nhật thông tin thành công')
+        this.modal.success({
+          nzTitle: 'Thành công',
+          nzContent: 'Đã cập nhật thông tin cá nhân, vui lòng đăng nhập lại để tiếp tục'
+        })
         localStorage.removeItem("accessToken");
         this.refreshToken();
         window.location.reload();

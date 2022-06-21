@@ -18,6 +18,14 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.initForm();
   }
+  type = 'password'
+  toggle = () => {
+    if (this.type === 'password') {
+      this.type = 'text'
+    } else {
+      this.type = 'password'
+    }
+  }
   initForm = () => {
     this.form = new FormGroup({
       email: new FormControl('', [
