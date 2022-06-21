@@ -59,3 +59,13 @@ button.focus,button:active.focus,button.active.focus {
     border-color: red !important;
     outline: none !important;
 }
+.p-grid {
+    display: flex !important;
+    flex-wrap: wrap;
+}
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+    border-color: red;
+    background-color: #fff;
+    outline: 0 !important;
+    color: red;
+}

@@ -19,7 +19,7 @@ import { ProductEditComponent } from './pages/admin/product-edit/product-edit.co
 import { CategoryComponent } from './pages/admin/category/category.component';
 import { AddProductComponent } from './pages/admin/add-product/add-product.component';
 import { NgxPayPalModule } from 'ngx-paypal';
-
+import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 // prime module
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
@@ -31,6 +31,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import {DialogModule} from 'primeng/dialog';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {PaginatorModule} from 'primeng/paginator';
+import {DataViewModule} from 'primeng/dataview';
+
 // Mui
 import { MatSelectModule } from '@angular/material/select';
 import { MatStepperModule } from '@angular/material/stepper';
@@ -56,7 +58,7 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 import { LayoutMainComponent } from './components/layout-main/layout-main.component';
 import { BillComponent } from './pages/admin/bill/bill.component';
 import { BillLayoutComponent } from './pages/admin/bill/bill-layout/bill-layout.component';
-
+import { ProductsComponent } from './pages/products/products.component';
 registerLocaleData(en);
 @NgModule({
   declarations: [
@@ -84,7 +86,8 @@ registerLocaleData(en);
     UserInfoComponent,
     LayoutMainComponent,
     BillComponent,
-    BillLayoutComponent
+    BillLayoutComponent,
+    ProductsComponent
   ],
   imports: [
     FormsModule,
@@ -111,6 +114,8 @@ registerLocaleData(en);
     NgxPayPalModule,
     NzTagModule,
     PaginatorModule,
+    DataViewModule,
+    NzCollapseModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],
