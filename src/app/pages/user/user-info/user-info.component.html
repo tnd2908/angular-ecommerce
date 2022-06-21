@@ -7,7 +7,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Email</label>
-                                <h2>{{user.email}}</h2>
+                                <h2 style="font-weight: bold;">{{user.email}}</h2>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Họ và tên</label>
@@ -22,32 +22,10 @@
                                 <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
                             </div>
                             <p routeLink="/login" class="mt-3 text-danger d-block mb-3">Nhập mật khẩu để cập nhật thông tin</p>
-                            <button type="submit" class="btn-register" (click)="submit()">Chỉnh sửa thông tin cá nhân</button>
+                            <button class="btn-edit" (click)="submit()">Chỉnh sửa</button>
                         </div>
                         <div class="col-md-6">
-                            <div class="labels d-flex">
-                                <div class="form-label">Giỏ hàng của bạn</div>
-                                <div style="margin-left: 160px;" class="total">
-                                    <div class="form-label">Tổng tiền</div>
-                                    <label style="color: red;" class="form-label">{{total | currency: 'VND'}} </label>
-                                </div>
-                            </div>
-                            <div class="mini-cart">
-                                <div *ngFor="let product of cartItems">
-                                    <div class="mini-item d-flex">
-                                        <div class="product-image">
-                                            <img src="{{url+'upload/'+product.images[0]}}" alt="">
-                                        </div>
-                                        <div class="product-info">
-                                            <h5> {{product.name}} </h5>
-                                            <p>Giá: {{product.price | currency: 'VND'}} </p>
-                                            <div class="action d-flex align-items-center">
-                                                <p>Số lượng {{product.quantity}} </p>
-                                            </div>
-                                        </div>    
-                                    </div>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </form>
