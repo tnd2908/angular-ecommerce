@@ -1,12 +1,11 @@
 <p-table [paginator]="true" [rows]="5" [showCurrentPageReport]="true"  [value]="bill" dataKey="name" responsiveLayout="scroll">
     <ng-template pTemplate="header">
         <tr>
-            <th style="width: 3rem"></th>
+            <th>Xem</th>
             <th>Tên khách hàng</th>
             <th>Ngày</th>
             <th>Trạng thái</th>
             <th>Tổng tiền </th>
-            <th>Xem</th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-bill let-expanded="expanded">
@@ -18,13 +17,6 @@
             <td>{{bill.createAt | date:'short'}}</td>
             <td> <nz-tag  [nzColor]="bill.color">{{bill.status}}</nz-tag></td>
             <td>{{bill.total | currency:'VND'}}</td>
-            <td style="width: 70px">
-                <div style="width: 70px" class="d-flex">
-                    <button class="btn-view">
-                        <i class="fal fa-eye"></i>
-                    </button>
-                </div>
-            </td>
         </tr>
     </ng-template>
     <ng-template pTemplate="rowexpansion" let-detail>

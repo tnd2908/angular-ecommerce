@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h1>Danh sách khách hàng</h1>
+            <p-table [paginator]="true" [rows]="9" [value]="users" responsiveLayout="scroll">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Tên KH</th>
+                        <th>Email</th>
+                        <th>Số điện thoại</th>
+                        <th>Ngày tạo</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-user>
+                    <tr>
+                        <td>{{user.fullName}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.phone}}</td>
+                        <td>{{user.createAt | date:'fullDate'}}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>

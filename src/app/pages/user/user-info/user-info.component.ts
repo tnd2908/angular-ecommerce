@@ -43,10 +43,9 @@ export class UserInfoComponent implements OnInit {
     .subscribe((res: any) => {
       console.log(res)
       if (res.success == true){
-        alert('Cập nhật thông tin thành công')
         this.modal.success({
           nzTitle: 'Thành công',
-          nzContent: 'Đã cập nhật thông tin cá nhân, vui lòng đăng nhập lại để tiếp tục'
+          nzContent: 'Đã cập nhật thông tin cá nhân'
         })
         localStorage.removeItem("accessToken");
         this.refreshToken();

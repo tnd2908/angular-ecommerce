@@ -23,6 +23,7 @@ import { BillComponent } from './pages/admin/bill/bill.component';
 import { BillLayoutComponent } from './pages/admin/bill/bill-layout/bill-layout.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { HistoryComponent } from './pages/history/history.component';
+import { UsersComponent } from './pages/admin/users/users.component';
 const routes: Routes = [
   {
     path: '', component: LayoutMainComponent, children: [
@@ -61,7 +62,9 @@ const routes: Routes = [
       { path: 'brand', component: BrandComponent },
       { path: 'brand/add', component: AddBrandComponent },
       { path: 'brand/edit/:id', component: EditBrandComponent },
-      { path: 'bill', component: BillComponent }
+      { path: 'bill', component: BillComponent },
+      { path: 'users', component: UsersComponent }
+
     ],
   },
 ];

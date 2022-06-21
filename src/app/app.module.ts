@@ -61,6 +61,7 @@ import { BillComponent } from './pages/admin/bill/bill.component';
 import { BillLayoutComponent } from './pages/admin/bill/bill-layout/bill-layout.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { HistoryComponent } from './pages/history/history.component';
+import { UsersComponent } from './pages/admin/users/users.component';
 registerLocaleData(en);
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ registerLocaleData(en);
     BillComponent,
     BillLayoutComponent,
     ProductsComponent,
-    HistoryComponent
+    HistoryComponent,
+    UsersComponent
   ],
   imports: [
     FormsModule,
