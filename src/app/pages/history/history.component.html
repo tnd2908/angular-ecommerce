@@ -1,0 +1,63 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Lịch sử mua hàng</h1>
+            <p-table [value]="history" dataKey="name" responsiveLayout="scroll">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem"></th>
+                        <th>Tên khách hàng</th>
+                        <th>Địa chỉ </th>
+                        <th>Ngày</th>
+                        <th>Trạng thái</th>
+                        <th>Tổng tiền </th>
+
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-bill let-expanded="expanded">
+                    <tr>
+                        <td>
+                            <button type="button" pButton pRipple [pRowToggler]="bill" class="p-button-text p-button-rounded p-button-plain" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                        </td>
+                        <td>{{bill.name}}</td>
+                        <td>{{bill.address}}</td>
+                        <td>{{bill.createAt | date:'short'}}</td>
+                        <td> <nz-tag  [nzColor]="bill.color">{{bill.status}}</nz-tag></td>
+                        <td>{{bill.total | currency:'VND'}}</td>
+
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="rowexpansion" let-detail>
+                    <tr>
+                        <td colspan="7">
+                            <div class="p-3">
+                                <p-table [value]="detail.details" dataKey="1">
+                                    <ng-template pTemplate="header">
+                                        <tr>
+                                            <th>Sản phẩm</th>
+                                            <th>Số lượng</th>
+                                            <th>Giá</th>
+                                            <th style="width: 4rem"></th>
+                                        </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="body" let-order>
+                                        <tr>
+                                            <td>{{order.productName}}</td>
+                                            <td>{{order.quantity}}</td>
+                                            <td>{{order.cost | currency:'VND'}}</td>
+                                        </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="emptymessage">
+                                        <tr>
+                                            <td colspan="6">There are no order for this product yet.</td>
+                                        </tr>
+                                    </ng-template>
+                                </p-table>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>

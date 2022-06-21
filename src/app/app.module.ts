@@ -51,6 +51,7 @@ import en from '@angular/common/locales/en';
 import { DashboardComponent } from './pages/user/dashboard/dashboard.component';
 import { UserComponent } from './pages/user/user.component';
 import { UserInfoComponent } from './pages/user/user-info/user-info.component';
+import {PasswordModule} from 'primeng/password';
 
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
@@ -59,6 +60,7 @@ import { LayoutMainComponent } from './components/layout-main/layout-main.compon
 import { BillComponent } from './pages/admin/bill/bill.component';
 import { BillLayoutComponent } from './pages/admin/bill/bill-layout/bill-layout.component';
 import { ProductsComponent } from './pages/products/products.component';
+import { HistoryComponent } from './pages/history/history.component';
 registerLocaleData(en);
 @NgModule({
   declarations: [
@@ -87,7 +89,8 @@ registerLocaleData(en);
     LayoutMainComponent,
     BillComponent,
     BillLayoutComponent,
-    ProductsComponent
+    ProductsComponent,
+    HistoryComponent
   ],
   imports: [
     FormsModule,
@@ -116,6 +119,7 @@ registerLocaleData(en);
     PaginatorModule,
     DataViewModule,
     NzCollapseModule,
+    PasswordModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],

@@ -22,14 +22,13 @@ export class HeaderComponent implements OnInit {
       this.user = res;
       const tempName = res.fullName.split(' ')
       this.userName = tempName[tempName.length-1]
-      console.log(this.userName)
     })
     this.getToken()
   }
 
   getToken() {
     this.tokenUser = localStorage.getItem("accessToken")
-    this.user = jwtDecode(this.tokenUser)
+    this.user = jwtDecode(this.tokenUser)    
     const tempName = this.user.fullName.split(' ')
       this.userName = tempName[tempName.length-1]
   }

@@ -22,7 +22,7 @@ import { LayoutMainComponent } from './components/layout-main/layout-main.compon
 import { BillComponent } from './pages/admin/bill/bill.component';
 import { BillLayoutComponent } from './pages/admin/bill/bill-layout/bill-layout.component';
 import { ProductsComponent } from './pages/products/products.component';
-
+import { HistoryComponent } from './pages/history/history.component';
 const routes: Routes = [
   {
     path: '', component: LayoutMainComponent, children: [
@@ -37,6 +37,11 @@ const routes: Routes = [
         component: UserComponent,
         canActivate: [hasAuthGuard]
       },
+      {
+        path: 'user/history',
+        component: HistoryComponent,
+        canActivate: [hasAuthGuard]
+      }
     ]
   },
   {

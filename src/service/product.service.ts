@@ -8,12 +8,12 @@ import { productList } from 'src/dummy/data'
 )
 export class ProductService {
     constructor(private http: HttpClient) {}
-    getProductList = () => {
+    getProductList = (category? : any, brand? : any) => {
         // return productList.map((item) => {
         //     const star = Math.floor(Math.random() * (5 - 1) + 1)
         //     return { ...item, price: new Intl.NumberFormat().format(item.price), star }
         // });
-        return this.http.get(`${API_URL}product`);
+        return this.http.get(`${API_URL}product?category=${category ? category : ''}&brand=${brand ? brand : ''}`);
     }
     getDetail = (name: String) => {
         return this.http.get(`${API_URL}product/detail/${name}`)

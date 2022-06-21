@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { NzModalService } from 'ng-zorro-antd/modal';
 import { API_URL } from 'src/app/utils/constant';
 import { BrandService } from 'src/service/brand.service';
 import { CategoryService } from 'src/service/category.service';
@@ -14,7 +15,15 @@ import { ProductService } from 'src/service/product.service';
 })
 export class ProductEditComponent implements OnInit {
 
-  constructor(private service: ProductService, private route: ActivatedRoute, private cateService: CategoryService, private brandService: BrandService, private http: HttpClient) { }
+  constructor(
+    private service: ProductService, 
+    private route: ActivatedRoute, 
+    private cateService: CategoryService, 
+    private brandService: BrandService, 
+    private http: HttpClient, 
+    private modal: NzModalService,
+    private router: Router,
+  ) { }
   id!: String;
   product: any;
   form!: FormGroup;
@@ -112,6 +121,20 @@ export class ProductEditComponent implements OnInit {
   onSubmit = () => {
     this.service.editProduct({ ...this.form.value, images: this.imageNameList, _id: this.product._id}).subscribe((res : any) => {
       console.log(res);
+      if(res.success === true) {
+        this.modal.success({
+          nzTitle: 'Thành công',
+          nzContent: 'Đã cập nhật lại thông tin sản phẩm!',
+          nzOnOk: () => {
+            this.router.navigate(['/admin/product'])
+          }
+        })
+      } else {
+        this.modal.error({
+          nzTitle: 'Thất bại',
+          nzContent: 'Đã xảy ra lỗi, vui lòng thử lại sau'
+        })
+      }
     })
   }
 }
